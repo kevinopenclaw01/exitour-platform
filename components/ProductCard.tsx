@@ -1,10 +1,14 @@
+import Link from "next/link";
 import type { Product } from "@/lib/data";
 
 const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value);
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+    <Link
+      href={`/products/${product.slug}`}
+      className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+    >
       <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">{product.destinationScope}</p>
       <h3 className="mt-3 text-xl font-black text-slate-950">{product.title}</h3>
       <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{product.summary}</p>
@@ -20,6 +24,6 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="text-xs font-semibold text-slate-500">{product.duration}</p>
         <p className="text-right text-lg font-black text-slate-950">{formatKrw(product.priceFromKrw)}원~</p>
       </div>
-    </article>
+    </Link>
   );
 }

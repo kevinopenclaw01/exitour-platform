@@ -1,16 +1,20 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Destination } from "@/lib/data";
 
 export default function DestinationCard({ destination }: { destination: Destination }) {
   return (
-    <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+    <Link
+      href={`/destinations/${destination.countrySlug}/${destination.citySlug}`}
+      className="group block overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+    >
       <div className="aspect-[4/3] overflow-hidden bg-slate-200">
         <Image
           src={destination.imageUrl}
           alt={`${destination.name} 여행 이미지`}
           width={800}
           height={600}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
       <div className="p-5">
@@ -29,6 +33,6 @@ export default function DestinationCard({ destination }: { destination: Destinat
         </div>
         <p className="mt-4 text-xs font-semibold text-slate-500">비행/이동: {destination.flightTime}</p>
       </div>
-    </article>
+    </Link>
   );
 }

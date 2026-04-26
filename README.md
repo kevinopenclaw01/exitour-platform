@@ -34,3 +34,53 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Supabase Database Setup
+
+Phase 3 adds Supabase/Postgres schema and seed files only. The current frontend still uses static data from `lib/data.ts`; quote form submission, admin pages, and OpenClaw integration are not connected yet.
+
+### 1. Create a Supabase project
+
+Create a Supabase project from the Supabase dashboard and copy the project URL, anon key, and service role key into local environment variables.
+
+Use `.env.example` as the reference:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+OPENCLAW_WEBHOOK_SECRET=
+ADMIN_EMAILS=
+KAKAO_CHANNEL_URL=
+NAVER_TALK_URL=
+```
+
+Never expose `SUPABASE_SERVICE_ROLE_KEY` in client-side code or any `NEXT_PUBLIC_*` variable.
+
+### 2. Apply migration
+
+Run the SQL in:
+
+```bash
+supabase/migrations/001_initial_schema.sql
+```
+
+You can apply it through the Supabase SQL editor or a Supabase CLI workflow once the project is configured.
+
+### 3. Run seed data
+
+After the schema is applied, run:
+
+```bash
+supabase/seed.sql
+```
+
+The seed contains sample destinations, products, hotels, rooms, and 2026 Q2 sample rates. Rate notes clearly mark them as sample prices that must be verified before real operation.
+
+### Current integration status
+
+- Frontend pages are not reading from Supabase yet.
+- `/quote` does not submit to the database yet.
+- Admin pages are not implemented yet.
+- OpenClaw API is not implemented yet.

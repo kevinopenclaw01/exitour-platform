@@ -1,18 +1,22 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Hotel } from "@/lib/data";
 
 const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value);
 
 export default function HotelCard({ hotel }: { hotel: Hotel }) {
   return (
-    <article className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+    <Link
+      href={`/hotels/${hotel.slug}`}
+      className="group block overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+    >
       <div className="aspect-[4/3] overflow-hidden bg-slate-200">
         <Image
           src={hotel.imageUrl}
           alt={`${hotel.name} 호텔 이미지`}
           width={800}
           height={600}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
         />
       </div>
       <div className="p-5">
@@ -31,6 +35,6 @@ export default function HotelCard({ hotel }: { hotel: Hotel }) {
         </div>
         <p className="mt-5 text-lg font-black text-slate-950">1박 {formatKrw(hotel.priceFromKrw)}원~</p>
       </div>
-    </article>
+    </Link>
   );
 }
