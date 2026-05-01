@@ -16,6 +16,7 @@ import {
   getHotelsForCity,
   getProductsForCity,
 } from "@/lib/data";
+import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 
 type CityPageProps = {
   params: Promise<{ countrySlug: string; citySlug: string }>;
@@ -53,6 +54,8 @@ export default async function CityDetailPage({ params }: CityPageProps) {
   }
 
   const cityProducts = getProductsForCity(countrySlug, citySlug);
+  const visibleCityProducts =
+    countrySlug === "vietnam" && citySlug === "danang" ? [danangRentcarProductCard, ...cityProducts] : cityProducts;
   const cityHotels = getHotelsForCity(countrySlug, citySlug);
 
   return (
@@ -85,7 +88,7 @@ export default async function CityDetailPage({ params }: CityPageProps) {
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">해당 도시 상품</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {cityProducts.map((product) => (
+            {visibleCityProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

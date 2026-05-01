@@ -3,10 +3,10 @@ import type { Product } from "@/lib/data";
 
 const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value);
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product, href }: { product: Product & { canonicalPath?: string }; href?: string }) {
   return (
     <Link
-      href={`/products/${product.slug}`}
+      href={href ?? product.canonicalPath ?? `/products/${product.slug}`}
       className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-700">{product.destinationScope}</p>

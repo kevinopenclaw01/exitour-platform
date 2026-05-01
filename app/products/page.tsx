@@ -1,6 +1,7 @@
 import CTASection from "@/components/CTASection";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/lib/data";
+import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 
 export default function ProductsPage() {
   return (
@@ -21,6 +22,7 @@ export default function ProductsPage() {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+          <ProductCard product={danangRentcarProductCard} href={danangRentcarProductCard.canonicalPath} />
         </div>
       </section>
       <CTASection />
