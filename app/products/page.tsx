@@ -1,6 +1,7 @@
 import CTASection from "@/components/CTASection";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/lib/data";
+import { guamRentcarProductCard } from "@/lib/mock/guamRentcar";
 import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 import { danangTransferProductCard } from "@/lib/mock/danangTransfer";
 
@@ -25,6 +26,7 @@ export default function ProductsPage() {
           ))}
           <ProductCard product={danangRentcarProductCard} href={danangRentcarProductCard.canonicalPath} />
           <ProductCard product={danangTransferProductCard} href={danangTransferProductCard.canonicalPath} />
+          <ProductCard product={guamRentcarProductCard} href={guamRentcarProductCard.canonicalPath} />
         </div>
       </section>
       <CTASection />

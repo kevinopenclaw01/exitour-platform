@@ -18,6 +18,7 @@ import {
   getHotelsForCountry,
   getProductsForCountry,
 } from "@/lib/data";
+import { guamRentcarProductCard } from "@/lib/mock/guamRentcar";
 
 type CountryPageProps = {
   params: Promise<{ countrySlug: string }>;
@@ -55,6 +56,7 @@ export default async function CountryDetailPage({ params }: CountryPageProps) {
 
   const countryCities = destinations.filter((destination) => destination.countrySlug === country.slug);
   const countryProducts = getProductsForCountry(country.slug);
+  const visibleCountryProducts = country.slug === "guam" ? [guamRentcarProductCard, ...countryProducts] : countryProducts;
   const countryHotels = getHotelsForCountry(country.slug);
 
   return (
@@ -102,7 +104,7 @@ export default async function CountryDetailPage({ params }: CountryPageProps) {
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black tracking-tight text-slate-950">해당 국가 상품</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {countryProducts.slice(0, 8).map((product) => (
+            {visibleCountryProducts.slice(0, 8).map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
