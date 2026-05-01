@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendQuoteNotification } from "@/lib/email/sendQuoteNotification";
 import { insertSupabaseRow } from "@/lib/supabase/server";
 
 type QuotePayload = {
@@ -152,6 +153,15 @@ export async function POST(request: Request) {
             };
 
       return NextResponse.json({ ok: false, message: failureMessage, debug }, { status: 500 });
+    }
+
+    try {
+      await sendQuoteNotification(payload);
+    } catch (emailError) {
+      console.error("Quote notification email failed:", {
+        message: emailError instanceof Error ? emailError.message : "Unknown email error",
+        name: emailError instanceof Error ? emailError.name : undefined,
+      });
     }
 
     return NextResponse.json({ ok: true, message: successMessage });
