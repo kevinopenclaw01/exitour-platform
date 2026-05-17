@@ -4,7 +4,8 @@ import { BulletList, FAQList, InfoBlock, NumberedList } from "@/components/Detai
 import KazakhstanGuideNotice from "@/components/kazakhstan/KazakhstanGuideNotice";
 import KazakhstanHero from "@/components/kazakhstan/KazakhstanHero";
 import PremiumCTA from "@/components/premium/PremiumCTA";
-import { getKazakhstanProduct, kazakhstanKakaoMessage } from "@/lib/mock/kazakhstanPremium";
+import { getKazakhstanProduct, kazakhstanKakaoMessage, kazakhstanQuotePrefills } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const product = getKazakhstanProduct("private-package", "4n6d-nature");
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -70,7 +71,7 @@ export default function KazakhstanNaturePackageDetailPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl space-y-8 px-5 py-14 sm:px-6 lg:px-8">
           <FAQList faqs={product.faqs} />
-          <PremiumCTA message={kazakhstanKakaoMessage} />
+          <PremiumCTA message={kazakhstanKakaoMessage} href={buildQuoteUrl(kazakhstanQuotePrefills.fourNightsSixDays)} />
         </div>
       </section>
     </>

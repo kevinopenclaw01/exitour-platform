@@ -1,4 +1,5 @@
 import type { FAQ, Product } from "@/lib/data";
+import type { QuotePrefillInput } from "@/lib/quote/prefill";
 
 export type KazakhstanProductType = "private-package" | "day-tour" | "airport-transfer";
 export type KazakhstanServiceLevel = "premium";
@@ -28,6 +29,7 @@ export type KazakhstanProduct = {
   notices: string[];
   faqs: FAQ[];
   relatedProductIds: string[];
+  quotePrefill?: QuotePrefillInput;
 };
 
 export const guidePolicy =
@@ -57,6 +59,58 @@ export const kazakhstanKakaoMessage = [
   "희망 여행지:",
   "문의 내용:",
 ].join("\n");
+
+export const kazakhstanQuotePrefills = {
+  threeNightsFiveDays: {
+    productId: "kazakhstan-3n5d-premium",
+    product: "Kazakhstan Almaty 3 nights 5 days premium private package",
+    destination: "Kazakhstan",
+    service: "Premium Package",
+    sourcePath: "/kazakhstan/almaty/private-package/3n5d-premium",
+  },
+  fourNightsSixDays: {
+    productId: "kazakhstan-4n6d-nature",
+    product: "Kazakhstan Almaty 4 nights 6 days premium nature trip",
+    destination: "Kazakhstan",
+    service: "Premium Package",
+    sourcePath: "/kazakhstan/almaty/private-package/4n6d-nature",
+  },
+  customPrivatePackage: {
+    productId: "kazakhstan-custom-private-package",
+    product: "Kazakhstan Custom Private Package DIY",
+    destination: "Kazakhstan",
+    service: "Custom Private Package",
+    sourcePath: "/kazakhstan/almaty/private-package/custom",
+  },
+  privateTourConsulting: {
+    productId: "kazakhstan-private-tour-consulting",
+    product: "Kazakhstan private tour consultation",
+    destination: "Kazakhstan",
+    service: "Private Tour",
+    sourcePath: "/kazakhstan/private-tour-guide",
+  },
+  hotelConsulting: {
+    productId: "kazakhstan-hotel-consulting",
+    product: "Kazakhstan Almaty hotel reservation consultation",
+    destination: "Kazakhstan",
+    service: "Hotel Reservation",
+    sourcePath: "/kazakhstan/almaty-hotel-guide",
+  },
+  kazakhstanHub: {
+    productId: "kazakhstan-premium-consulting",
+    product: "Kazakhstan premium private travel consultation",
+    destination: "Kazakhstan",
+    service: "Premium Travel Consultation",
+    sourcePath: "/kazakhstan",
+  },
+  kazakhstanPremiumHub: {
+    productId: "kazakhstan-premium-package-hub",
+    product: "Kazakhstan premium package consultation",
+    destination: "Kazakhstan",
+    service: "Premium Package",
+    sourcePath: "/kazakhstan/premium-packages",
+  },
+} satisfies Record<string, QuotePrefillInput>;
 
 export const productTypes = [
   { id: "private-package", label: "프리미엄 프라이빗 패키지", path: "/kazakhstan/almaty/private-package" },
@@ -206,6 +260,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     ],
     faqs: kazakhstanFaqs,
     relatedProductIds: ["kazakhstan-4n6d-nature", "kazakhstan-charyn-canyon"],
+    quotePrefill: kazakhstanQuotePrefills.threeNightsFiveDays,
   },
   {
     id: "kazakhstan-4n6d-nature",
@@ -232,6 +287,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     notices: commonNotices,
     faqs: kazakhstanFaqs,
     relatedProductIds: ["kazakhstan-3n5d-premium", "kazakhstan-charyn-canyon"],
+    quotePrefill: kazakhstanQuotePrefills.fourNightsSixDays,
   },
   {
     id: "kazakhstan-charyn-canyon",
@@ -283,6 +339,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     notices: commonNotices,
     faqs: kazakhstanFaqs,
     relatedProductIds: ["kazakhstan-3n5d-premium"],
+    quotePrefill: kazakhstanQuotePrefills.customPrivatePackage,
   },
   {
     id: "kazakhstan-kolsai-kaindy",

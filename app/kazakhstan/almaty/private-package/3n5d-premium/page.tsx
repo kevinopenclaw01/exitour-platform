@@ -13,8 +13,10 @@ import {
   kazakhstanKakaoMessage,
   kazakhstanMealHighlights,
   kazakhstanPreparationItems,
+  kazakhstanQuotePrefills,
   pricingPolicy,
 } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const product = getKazakhstanProduct("private-package", "3n5d-premium");
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -128,7 +130,7 @@ export default function KazakhstanThreeNightPremiumPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl space-y-8 px-5 py-14 sm:px-6 lg:px-8">
           <FAQList faqs={product.faqs} />
-          <PremiumCTA message={kazakhstanKakaoMessage} />
+          <PremiumCTA message={kazakhstanKakaoMessage} href={buildQuoteUrl(kazakhstanQuotePrefills.threeNightsFiveDays)} />
           <div className="grid gap-3 sm:grid-cols-2">
             <Link className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-slate-100" href="/kazakhstan/private-tour-guide">
               카자흐스탄 프라이빗 투어 가이드

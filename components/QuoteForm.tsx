@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from "react";
 import type { Destination } from "@/lib/data";
+import { hasQuotePrefill, type QuotePrefillInput } from "@/lib/quote/prefill";
 
 type QuoteFormProps = {
   destinations: Destination[];
   hotelGrades: string[];
   serviceOptions: string[];
+  prefill?: QuotePrefillInput;
 };
 
 type FormStatus = {
@@ -26,14 +28,33 @@ const parseBudget = (value: FormDataEntryValue | null) => {
   return digits ? Number(digits) : undefined;
 };
 
-export default function QuoteForm({ destinations, hotelGrades, serviceOptions }: QuoteFormProps) {
+export default function QuoteForm({ destinations, hotelGrades, serviceOptions, prefill }: QuoteFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<FormStatus>({ type: "idle", message: "" });
+  const hasPrefill = hasQuotePrefill(prefill);
+  const prefillDestination = prefill?.destination;
+  const prefillService = prefill?.service;
 
   const destinationOptions = useMemo(
     () => destinations.map((destination) => `${destination.country} - ${destination.name}`),
     [destinations],
   );
+
+  const destinationValue = useMemo(() => {
+    if (!prefillDestination) {
+      return "";
+    }
+
+    return destinationOptions.find((option) => option.toLowerCase().includes(prefillDestination.toLowerCase())) ?? prefillDestination;
+  }, [destinationOptions, prefillDestination]);
+
+  const serviceValue = useMemo(() => {
+    if (!prefillService) {
+      return "";
+    }
+
+    return serviceOptions.find((option) => option.toLowerCase() === prefillService.toLowerCase()) ?? prefillService;
+  }, [prefillService, serviceOptions]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -44,9 +65,20 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions }:
     const requestedServices = formData
       .getAll("requested_services")
       .filter((service): service is string => typeof service === "string");
+    const destinationText = formData.get("destination_text");
+    const editedService = formData.get("prefill_service");
+    const quotePrefill = hasPrefill
+      ? {
+          productId: formData.get("prefill_product_id"),
+          product: formData.get("prefill_product"),
+          destination: destinationText,
+          service: typeof editedService === "string" && editedService.trim() ? editedService : serviceValue,
+          sourcePath: formData.get("prefill_source_path"),
+        }
+      : undefined;
 
     const payload = {
-      destination_text: formData.get("destination_text"),
+      destination_text: destinationText,
       start_date: formData.get("start_date"),
       end_date: formData.get("end_date"),
       adults: formData.get("adults"),
@@ -60,6 +92,7 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions }:
       kakao_id: formData.get("kakao_id"),
       email: formData.get("email"),
       message: formData.get("message"),
+      quote_prefill: quotePrefill,
       privacy_agreed: formData.get("privacy_agreed") === "on",
     };
 
@@ -90,13 +123,35 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions }:
 
   return (
     <form onSubmit={handleSubmit} className="mt-10 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+      {hasPrefill ? (
+        <section className="mb-6 rounded-lg border border-cyan-200 bg-cyan-50 p-4">
+          <p className="text-sm font-black text-cyan-900">자동 입력된 상담 정보</p>
+          <div className="mt-3 grid gap-4 md:grid-cols-2">
+            <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
+              상품명
+              <input name="prefill_product" type="text" defaultValue={prefill?.product ?? ""} className={fieldClass} />
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
+              문의 유형
+              <input name="prefill_service" type="text" defaultValue={prefill?.service ?? ""} className={fieldClass} />
+            </label>
+          </div>
+          <input name="prefill_product_id" type="hidden" value={prefill?.productId ?? ""} readOnly />
+          <input name="prefill_source_path" type="hidden" value={prefill?.sourcePath ?? ""} readOnly />
+          {prefill?.sourcePath ? <p className="mt-3 text-xs font-semibold text-cyan-900">유입 페이지: {prefill.sourcePath}</p> : null}
+        </section>
+      ) : null}
+
       <div className="grid gap-5 md:grid-cols-2">
         <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
           여행지
-          <select name="destination_text" required className={fieldClass} defaultValue="">
+          <select name="destination_text" required className={fieldClass} defaultValue={destinationValue}>
             <option value="" disabled>
               선택해주세요
             </option>
+            {destinationValue && !destinationOptions.includes(destinationValue) ? (
+              <option value={destinationValue}>{destinationValue}</option>
+            ) : null}
             {destinationOptions.map((destination) => (
               <option key={destination} value={destination}>
                 {destination}
@@ -164,10 +219,22 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions }:
               key={service}
               className="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-3 py-3 text-sm font-semibold text-slate-700"
             >
-              <input name="requested_services" value={service} type="checkbox" className="h-4 w-4 accent-cyan-600" />
+              <input
+                name="requested_services"
+                value={service}
+                type="checkbox"
+                defaultChecked={serviceValue === service}
+                className="h-4 w-4 accent-cyan-600"
+              />
               {service}
             </label>
           ))}
+          {serviceValue && !serviceOptions.includes(serviceValue) ? (
+            <label className="flex items-center gap-2 rounded-md border border-cyan-200 bg-cyan-50 px-3 py-3 text-sm font-semibold text-slate-700">
+              <input name="requested_services" value={serviceValue} type="checkbox" defaultChecked className="h-4 w-4 accent-cyan-600" />
+              {serviceValue}
+            </label>
+          ) : null}
         </div>
       </fieldset>
 

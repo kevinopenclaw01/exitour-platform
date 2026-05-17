@@ -8,7 +8,9 @@ import {
   kazakhstanFaqs,
   kazakhstanKakaoMessage,
   kazakhstanProducts,
+  kazakhstanQuotePrefills,
 } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -65,7 +67,7 @@ export default function KazakhstanPremiumPackagesPage() {
         <div className="mx-auto max-w-7xl space-y-8 px-5 py-14 sm:px-6 lg:px-8">
           <KazakhstanGuideNotice />
           <FAQList faqs={kazakhstanFaqs} />
-          <PremiumCTA message={kazakhstanKakaoMessage} />
+          <PremiumCTA message={kazakhstanKakaoMessage} href={buildQuoteUrl(kazakhstanQuotePrefills.kazakhstanPremiumHub)} />
         </div>
       </section>
     </>

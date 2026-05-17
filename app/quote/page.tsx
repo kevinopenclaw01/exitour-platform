@@ -1,9 +1,22 @@
 import QuoteForm from "@/components/QuoteForm";
 import { destinations, serviceOptions } from "@/lib/data";
+import { sanitizeQuotePrefill } from "@/lib/quote/prefill";
 
 const hotelGrades = ["상관없음", "4성급", "5성급", "풀빌라", "럭셔리"];
 
-export default function QuotePage() {
+type QuotePageProps = {
+  searchParams: Promise<{
+    productId?: string;
+    product?: string;
+    destination?: string;
+    service?: string;
+    sourcePath?: string;
+  }>;
+};
+
+export default async function QuotePage({ searchParams }: QuotePageProps) {
+  const prefill = sanitizeQuotePrefill(await searchParams);
+
   return (
     <section className="bg-slate-50">
       <div className="mx-auto max-w-5xl px-5 py-14 sm:px-6 lg:px-8">
@@ -15,7 +28,7 @@ export default function QuotePage() {
           </p>
         </div>
 
-        <QuoteForm destinations={destinations} hotelGrades={hotelGrades} serviceOptions={serviceOptions} />
+        <QuoteForm destinations={destinations} hotelGrades={hotelGrades} serviceOptions={serviceOptions} prefill={prefill} />
       </div>
     </section>
   );

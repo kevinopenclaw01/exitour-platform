@@ -10,8 +10,10 @@ import {
   kazakhstanFaqs,
   kazakhstanKakaoMessage,
   kazakhstanProducts,
+  kazakhstanQuotePrefills,
   productTypes,
 } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -107,7 +109,7 @@ export default function KazakhstanPage() {
             <Link href="/kazakhstan/premium-packages" className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-white">카자흐스탄 프리미엄 허브</Link>
             <Link href="/premium-package-guide" className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-white">프리미엄 패키지 가이드</Link>
           </div>
-          <PremiumCTA message={kazakhstanKakaoMessage} />
+          <PremiumCTA message={kazakhstanKakaoMessage} href={buildQuoteUrl(kazakhstanQuotePrefills.kazakhstanHub)} />
         </div>
       </section>
     </>
