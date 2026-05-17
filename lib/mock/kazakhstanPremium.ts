@@ -31,21 +31,30 @@ export type KazakhstanProduct = {
 };
 
 export const guidePolicy =
-  "한국어 가이드는 일정과 시즌에 따라 가능 여부가 달라질 수 있습니다. 한국어 가이드 배정이 어려운 경우 영어 가이드와 한국어 통역 지원을 조합해 안내드릴 수 있습니다.";
+  "한국어 가이드는 일정과 시즌에 따라 가능 여부가 달라질 수 있습니다. 한국어 가이드 배정이 어려운 경우, 영어 가이드와 한국어 통역 조합으로 안내를 도와드립니다.";
 
 export const pricingPolicy =
-  "기본 요금은 4인 기준으로 산정됩니다. 1~3인 이용도 가능하지만, 전용차량·가이드·식사 포함 상품 특성상 인원에 따라 1인당 요금이 달라질 수 있습니다. 정확한 요금은 일정, 인원, 가이드 언어, 이동 거리, 숙박 여부에 따라 상담 후 안내됩니다.";
+  "카자흐스탄 프리미엄 패키지는 인원, 일정, 호텔 등급, 가이드 언어, 차량 조건에 따라 요금이 달라집니다. 기본 상담 기준은 4인 이상이며, 6인 이상 단체는 별도 견적이 가능합니다. 정확한 요금은 희망 일정과 인원 확인 후 안내드립니다.";
 
 export const kazakhstanKakaoMessage = [
-  "안녕하세요. EXITour 카자흐스탄 프리미엄 여행 문의드립니다.",
-  "희망 여행 형태: 프라이빗 당일투어 / 2일 이상 프리미엄 패키지 / 공항 픽업·샌딩",
-  "희망 여행지:",
+  "안녕하세요. EXITour 카자흐스탄 여행 문의드립니다.",
+  "",
+  "희망 상품:",
+  "- 3박 5일 프리미엄 패키지",
+  "- 4박 6일 프리미엄 패키지",
+  "- 맞춤 프라이빗 패키지 DIY",
+  "- 조인 그룹투어",
+  "- 프라이빗 단품투어",
+  "- 공항 픽업/샌딩",
+  "- 호텔 예약",
+  "",
   "희망 출발일:",
   "여행 기간:",
   "인원:",
-  "가이드 언어: 영어 가이드 / 한국어 가이드 / 영어 가이드+한국어 통역",
-  "숙박 필요 여부:",
+  "희망 호텔 등급:",
+  "가이드 언어:",
   "식사 요청사항:",
+  "희망 여행지:",
   "문의 내용:",
 ].join("\n");
 
@@ -112,8 +121,47 @@ export const kazakhstanFaqs: FAQ[] = [
   },
 ];
 
-const commonIncludes = ["전용차량", "현지 가이드", "일정 내 식사 상담 포함", "주요 자연 명소 동선 설계", "예약 전 이동 거리와 컨디션 안내"];
-const commonExcludes = ["국제선 항공권", "개인 경비", "여행자보험", "확정 전 숙박 보장", "선택 액티비티"];
+export const kazakhstanHotelOptions = [
+  "스탠다드 / 밸류 클래스",
+  "디럭스 / 상위 4성급 클래스",
+  "프리미엄 클래스",
+  "콜사이 / 사티 지역 숙박",
+];
+
+export const hotelPolicy =
+  "특정 호텔은 확정 보장이 아니며, 예약 시점의 객실 가능 여부와 시즌에 따라 예정 호텔 또는 동급 호텔로 변경될 수 있습니다. 정확한 호텔은 상담 및 예약 확정 시 안내드립니다.";
+
+export const kazakhstanMealHighlights = [
+  "현지식",
+  "조지아식",
+  "한식 특식",
+  "송어구이",
+  "예정 또는 동급 식당",
+  "상담 후 확정",
+];
+
+export const kazakhstanPreparationItems = [
+  "장거리 이동에 편한 복장과 신발",
+  "얇은 겉옷과 방풍 의류",
+  "개인 상비약",
+  "보조 배터리",
+  "오프라인 지도 또는 여권 사본",
+  "현지 날씨에 따른 선글라스와 자외선 차단제",
+];
+
+const commonIncludes = ["일정표상 숙박", "전용차량", "현지 가이드", "기사", "일정표상 식사", "관광지 입장료", "데일리 생수", "일정표에 명시된 포함 내역"];
+const commonExcludes = [
+  "국제선 항공권",
+  "개인 경비",
+  "개인 매너팁",
+  "가이드/기사 경비, 포함 여부에 따라 조정",
+  "유료 화장실 이용료",
+  "일정 외 추가 식음료",
+  "선택 체험 비용",
+  "싱글룸 추가비",
+  "호텔 업그레이드 비용",
+  "여행자보험, 포함 시 별도 표기",
+];
 const commonNotices = [
   "카자흐스탄 자연 지역은 장거리 이동과 비포장 구간이 포함될 수 있습니다.",
   "외곽 자연 지역은 인터넷이 불안정할 수 있어 가이드 동행을 권장합니다.",
@@ -122,6 +170,43 @@ const commonNotices = [
 ];
 
 export const kazakhstanProducts: KazakhstanProduct[] = [
+  {
+    id: "kazakhstan-3n5d-premium",
+    slug: "3n5d-premium",
+    country: "kazakhstan",
+    city: "almaty",
+    productType: "private-package",
+    serviceLevel: "premium",
+    canonicalPath: "/kazakhstan/almaty/private-package/3n5d-premium",
+    title: "카자흐스탄 알마티 3박 5일 프리미엄 프라이빗 패키지",
+    shortTitle: "알마티 3박 5일 프리미엄 패키지",
+    summary:
+      "알마티를 거점으로 침블락, 아유사이, 차린캐년, 콜사이호수, 블랙캐년, 이식호수, 투르겐폭포, 알마티 시티투어를 전용차량과 가이드 동행으로 여행하는 카자흐스탄 3박 5일 프리미엄 프라이빗 패키지입니다.",
+    duration: "3박 5일",
+    priceFromKrw: 0,
+    minRecommendedPeople: 4,
+    status: "available",
+    imagePath: "/images/kazakhstan/premium-private-tour.jpg",
+    highlights: ["3박 5일 대표 상품", "전용차량+가이드", "식사 포함", "호텔 선택형"],
+    recommendedFor: ["카자흐스탄을 처음 가는 프리미엄 자연 여행 고객", "부모님 동반 가족", "장거리 이동과 현지 소통을 맡기고 싶은 팀"],
+    includes: commonIncludes,
+    excludes: commonExcludes,
+    itinerary: [
+      "Day 1: 알마티 국제공항 도착, 가이드 미팅, 호텔 이동 및 휴식",
+      "Day 2: 침블락, 초대 대통령 공원, 아유사이 국립공원, 싸이란 파크, 특식/맛집투어",
+      "Day 3: 차린 캐년, 콜사이 호수, 블랙캐년, 현지식 또는 특식",
+      "Day 4: 이식호수, 투르겐 폭포, 이식박물관 / 황금인간, 한식 또는 특식",
+      "Day 5: 알마라산, 알마티 시티투어, 그린바자르, 젠코브성당, 판필로브 공원, 아르바트 거리 등 일정/요일/시간에 따라 조정, 공항 이동",
+    ],
+    notices: [
+      ...commonNotices,
+      hotelPolicy,
+      "홍범도 장군 기념관, 카자흐 전통복장 체험, 사마르칸 포토존 등은 가능 시 특전으로 상담하며 확정 보장 사항이 아닙니다.",
+      "특정 식당, 특정 호텔, 특정 특전은 예정 또는 동급 기준이며 상담 후 확정됩니다.",
+    ],
+    faqs: kazakhstanFaqs,
+    relatedProductIds: ["kazakhstan-4n6d-nature", "kazakhstan-charyn-canyon"],
+  },
   {
     id: "kazakhstan-4n6d-nature",
     slug: "4n6d-nature",
@@ -146,7 +231,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     itinerary: ["알마티 도착 및 휴식", "차른 캐년 프라이빗 투어", "콜사이·카인디 호수 자연 코스", "알틴에멜 국립공원 또는 대체 자연 코스", "알마티 시내 휴식과 공항 이동"],
     notices: commonNotices,
     faqs: kazakhstanFaqs,
-    relatedProductIds: ["kazakhstan-charyn-canyon"],
+    relatedProductIds: ["kazakhstan-3n5d-premium", "kazakhstan-charyn-canyon"],
   },
   {
     id: "kazakhstan-charyn-canyon",
@@ -172,7 +257,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     itinerary: ["알마티 호텔 출발", "차른 캐년 이동", "캐년 산책과 전망 포인트", "현지 식사 또는 휴식", "알마티 복귀"],
     notices: commonNotices,
     faqs: kazakhstanFaqs,
-    relatedProductIds: ["kazakhstan-4n6d-nature"],
+    relatedProductIds: ["kazakhstan-3n5d-premium", "kazakhstan-4n6d-nature"],
   },
   {
     id: "kazakhstan-custom-private",
@@ -197,7 +282,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     itinerary: ["상담 후 구성"],
     notices: commonNotices,
     faqs: kazakhstanFaqs,
-    relatedProductIds: ["kazakhstan-4n6d-nature"],
+    relatedProductIds: ["kazakhstan-3n5d-premium"],
   },
   {
     id: "kazakhstan-kolsai-kaindy",
@@ -222,7 +307,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     itinerary: ["상세 준비 중"],
     notices: commonNotices,
     faqs: kazakhstanFaqs,
-    relatedProductIds: ["kazakhstan-4n6d-nature"],
+    relatedProductIds: ["kazakhstan-3n5d-premium"],
   },
   {
     id: "kazakhstan-altyn-emel",
@@ -247,9 +332,40 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     itinerary: ["상세 준비 중"],
     notices: commonNotices,
     faqs: kazakhstanFaqs,
-    relatedProductIds: ["kazakhstan-4n6d-nature"],
+    relatedProductIds: ["kazakhstan-3n5d-premium"],
   },
 ];
+
+export const privateTourGuide = {
+  title: "카자흐스탄 프라이빗 가이드 투어 가이드｜렌트카보다 가이드 동행이 적합한 이유",
+  description: "카자흐스탄 자연 여행에서 장거리 이동, 비포장 도로, 통신 불안정, 언어 소통 문제 때문에 프라이빗 가이드 투어가 필요한 이유를 정리한 정보 페이지입니다.",
+  sections: [
+    { title: "장거리 이동", body: "알마티에서 차린캐년, 콜사이호수, 알틴에멜 등 주요 자연 지역은 이동 시간이 길어 차량 컨디션과 중간 휴식 동선이 중요합니다." },
+    { title: "비포장 도로", body: "일부 자연 지역은 도로 상태가 일정하지 않을 수 있어 현지 운전 경험이 있는 기사와 가이드 동행을 권장합니다." },
+    { title: "인터넷 불안정 지역", body: "외곽 자연 지역은 통신이 불안정할 수 있어 즉석 검색이나 번역 앱에 의존하기 어렵습니다." },
+    { title: "언어 소통 문제", body: "관광지, 식당, 이동 중 현지 소통이 필요할 수 있어 영어 가이드 또는 한국어 통역 지원 조합이 안정적입니다." },
+    { title: "관광지 시설 제한", body: "유료 화장실, 휴식 공간, 식사 장소 등 시설이 제한적인 구간은 사전 안내와 동선 조율이 필요합니다." },
+    { title: "식사와 휴식 동선", body: "현지식, 조지아식, 한식 특식, 송어구이 등 식사 콘텐츠를 일정 흐름 안에 자연스럽게 배치하는 것이 만족도를 높입니다." },
+    { title: "부모님 동반 여행 시 주의사항", body: "차량 이동 시간, 기온 변화, 걷는 거리, 화장실 이용 가능 여부를 고려해 무리 없는 일정으로 조정해야 합니다." },
+    { title: "단품 당일투어와 2일 이상 패키지 차이", body: "당일투어는 한 명소를 집중 방문하고, 2일 이상 패키지는 숙박과 식사, 장거리 이동 컨디션까지 설계합니다." },
+    { title: "가이드 언어 선택 기준", body: guidePolicy },
+  ],
+};
+
+export const almatyHotelGuide = {
+  title: "알마티 호텔 선택 가이드｜스탠다드·디럭스·프리미엄·콜사이/사티 숙박",
+  description: "카자흐스탄 프리미엄 패키지 상담 중 호텔 등급을 선택할 수 있도록 알마티와 콜사이·사티 지역 숙박 기준을 정리한 정보 페이지입니다.",
+  sections: [
+    { title: "알마티 호텔 선택 기준", body: "알마티는 시내 동선, 공항 이동, 식사 접근성, 다음 날 자연 투어 출발 시간을 기준으로 호텔 위치를 잡는 것이 좋습니다." },
+    { title: "스탠다드 / 밸류 클래스", body: "예산 균형을 중시하는 고객에게 적합합니다. 객실 컨디션은 상담 시 예정 또는 동급 기준으로 안내합니다." },
+    { title: "디럭스 / 상위 4성급 클래스", body: "부모님 동반과 가족 여행에서 가장 많이 검토하는 등급입니다. 위치와 조식, 객실 컨디션을 함께 봅니다." },
+    { title: "프리미엄 클래스", body: "호텔 체류 만족도와 객실 컨디션을 중시하는 고객에게 추천합니다. 시즌과 객실 가능 여부에 따라 요금 차이가 큽니다." },
+    { title: "트윈룸 수배 주의사항", body: "트윈룸은 호텔과 날짜에 따라 수량이 제한될 수 있어 상담 단계에서 침대 타입을 미리 확인해야 합니다." },
+    { title: "알마티 시내 호텔 예시", body: "특정 호텔 확정이 아니라 위치, 등급, 객실 가능 여부에 맞춰 예정 또는 동급 호텔로 안내합니다." },
+    { title: "콜사이·사티 지역 숙박 예시", body: "자연 지역 숙박은 도시 호텔과 기준이 다를 수 있습니다. 지역 특성상 시설과 객실 타입은 상담 후 확정합니다." },
+    { title: "동급 호텔 변경 가능성", body: hotelPolicy },
+  ],
+};
 
 export const premiumPackageGuide = {
   title: "프리미엄 패키지 여행 가이드｜단체 패키지와 맞춤 단독여행의 차이",

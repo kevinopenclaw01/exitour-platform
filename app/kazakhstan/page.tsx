@@ -18,7 +18,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export function generateMetadata(): Metadata {
   return {
     title: "카자흐스탄 프리미엄 프라이빗 여행 | EXITour",
-    description: "알마티에서 시작하는 설산, 호수, 캐년, 사막의 여정을 전용차량과 가이드 동행으로 상담합니다.",
+    description: "알마티를 중심으로 설산, 호수, 캐년, 국립공원, 시티투어를 전용차량과 가이드 동행으로 여행하는 고가 프리미엄 프라이빗 자연여행입니다.",
     alternates: { canonical: "/kazakhstan" },
   };
 }
@@ -56,9 +56,9 @@ export default function KazakhstanPage() {
       <KazakhstanHero
         eyebrow="Kazakhstan Premium Private"
         title="카자흐스탄 프리미엄 프라이빗 여행"
-        description="알마티에서 시작하는 설산, 호수, 캐년, 사막의 여정. 전용차량과 가이드가 함께하는 맞춤형 단독 투어로 안내합니다."
+        description="일반 저가 패키지나 렌트카 상품이 아니라, 알마티를 중심으로 설산, 호수, 캐년, 국립공원, 시티투어를 전용차량과 가이드 동행으로 여행하는 고가 프리미엄 자연여행입니다."
         imagePath="/images/kazakhstan/almaty-hero.jpg"
-        meta={["전용차량", "가이드 동행", "4인 기준 상담", "렌트카 목적지 아님"]}
+        meta={["전용차량", "가이드 동행", "식사 포함", "호텔 선택형", "렌트카 제외"]}
       />
       <section className="bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-14 sm:px-6 lg:grid-cols-3 lg:px-8">
@@ -73,7 +73,7 @@ export default function KazakhstanPage() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-14 sm:px-6 lg:grid-cols-2 lg:px-8">
           <InfoBlock title="왜 가이드 동행이 필요한가요?">
-            <BulletList items={["장거리 이동이 많습니다.", "일부 자연 지역은 비포장 도로가 포함됩니다.", "외곽 지역은 인터넷이 불안정할 수 있습니다.", "현지 소통과 일정 변경 대응이 중요합니다."]} />
+            <BulletList items={["장거리 이동이 많습니다.", "일부 자연 지역은 비포장 도로가 포함됩니다.", "외곽 지역은 인터넷이 불안정할 수 있습니다.", "언어 문제와 현지 소통 때문에 일정 변경 대응이 중요합니다."]} />
           </InfoBlock>
           <KazakhstanGuideNotice />
         </div>
@@ -92,7 +92,7 @@ export default function KazakhstanPage() {
       </section>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">Featured products</h2>
+          <h2 className="text-3xl font-black tracking-tight text-slate-950">대표 상품</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {featuredProducts.map((product) => (
               <KazakhstanProductCard key={product.id} product={product} />
