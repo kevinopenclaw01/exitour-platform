@@ -15,7 +15,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export function generateMetadata(): Metadata {
   return {
     title: "카자흐스탄 프리미엄 패키지 | EXITour",
-    description: "2일 이상 카자흐스탄 프라이빗 자연 패키지를 전용차량과 가이드 동행으로 상담합니다.",
+    description: "카자흐스탄 알마티 3박 5일 대표 프리미엄 패키지를 중심으로 전용차량, 가이드, 식사, 호텔 선택형 일정을 상담합니다.",
     alternates: { canonical: "/kazakhstan/premium-packages" },
   };
 }
@@ -36,15 +36,15 @@ export default function KazakhstanPremiumPackagesPage() {
       ))}
       <KazakhstanHero
         eyebrow="Kazakhstan Premium Packages"
-        title="카자흐스탄 2일 이상 프리미엄 프라이빗 패키지"
-        description="알마티를 거점으로 캐년, 호수, 사막, 국립공원을 전용차량과 가이드 동행으로 연결합니다."
+        title="카자흐스탄 3박 5일 대표 프리미엄 패키지"
+        description="알마티 3박 5일 대표 상품을 우선으로, 전용차량과 가이드 동행, 식사 포함, 호텔 선택형 구조의 프리미엄 프라이빗 자연여행을 상담합니다."
         imagePath="/images/kazakhstan/premium-private-tour.jpg"
-        meta={["2일 이상 상담 가능", "전용차량", "가이드 포함", "식사 동선 상담"]}
+        meta={["3박 5일 우선 오픈", "전용차량", "가이드 포함", "식사 포함", "호텔 선택형"]}
       />
       <section className="bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-14 sm:px-6 lg:grid-cols-2 lg:px-8">
-          <InfoBlock title="왜 카자흐스탄 프리미엄 패키지인가요?">
-            <p>자연 명소 간 이동 거리가 길고 현지 소통과 도로 상황 변수가 있어, 전용차량과 가이드가 함께하는 단독 일정이 여행 만족도와 안정성을 높입니다.</p>
+          <InfoBlock title="왜 3박 5일 대표 상품인가요?">
+            <p>알마티 시내와 침블락, 차린캐년, 콜사이호수, 이식호수, 투르겐폭포를 무리 없이 묶어 첫 카자흐스탄 프리미엄 자연여행으로 소개하기 좋습니다.</p>
           </InfoBlock>
           <InfoBlock title="포함 개념">
             <BulletList items={["전용차량", "가이드 동행", "식사 동선 상담", "숙박 필요 여부 확인", "장거리 이동 컨디션 안내"]} />
@@ -53,7 +53,7 @@ export default function KazakhstanPremiumPackagesPage() {
       </section>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">추천 패키지</h2>
+          <h2 className="text-3xl font-black tracking-tight text-slate-950">우선 오픈 패키지</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {packageProducts.map((product) => (
               <KazakhstanProductCard key={product.id} product={product} />
