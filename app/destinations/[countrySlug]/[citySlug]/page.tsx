@@ -18,6 +18,7 @@ import {
 } from "@/lib/data";
 import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 import { danangTransferProductCard } from "@/lib/mock/danangTransfer";
+import { availableKazakhstanProductCards } from "@/lib/mock/kazakhstanPremium";
 
 type CityPageProps = {
   params: Promise<{ countrySlug: string; citySlug: string }>;
@@ -58,6 +59,8 @@ export default async function CityDetailPage({ params }: CityPageProps) {
   const visibleCityProducts =
     countrySlug === "vietnam" && citySlug === "danang"
       ? [danangRentcarProductCard, danangTransferProductCard, ...cityProducts]
+      : countrySlug === "kazakhstan" && citySlug === "almaty"
+        ? [...availableKazakhstanProductCards, ...cityProducts]
       : cityProducts;
   const cityHotels = getHotelsForCity(countrySlug, citySlug);
 

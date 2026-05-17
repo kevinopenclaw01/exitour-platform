@@ -4,6 +4,7 @@ import { products } from "@/lib/data";
 import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 import { danangTransferProductCard } from "@/lib/mock/danangTransfer";
 import { guamTransferProductCard } from "@/lib/mock/guamTransfer";
+import { availableKazakhstanProductCards } from "@/lib/mock/kazakhstanPremium";
 
 export default function ProductsPage() {
   return (
@@ -27,6 +28,9 @@ export default function ProductsPage() {
           <ProductCard product={danangRentcarProductCard} href={danangRentcarProductCard.canonicalPath} />
           <ProductCard product={danangTransferProductCard} href={danangTransferProductCard.canonicalPath} />
           <ProductCard product={guamTransferProductCard} href={guamTransferProductCard.canonicalPath} />
+          {availableKazakhstanProductCards.map((product) => (
+            <ProductCard key={product.id} product={product} href={product.canonicalPath} />
+          ))}
         </div>
       </section>
       <CTASection />
