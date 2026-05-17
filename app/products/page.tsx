@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { products } from "@/lib/data";
 import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 import { danangTransferProductCard } from "@/lib/mock/danangTransfer";
+import { guamTransferProductCard } from "@/lib/mock/guamTransfer";
 
 export default function ProductsPage() {
   return (
@@ -25,6 +26,7 @@ export default function ProductsPage() {
           ))}
           <ProductCard product={danangRentcarProductCard} href={danangRentcarProductCard.canonicalPath} />
           <ProductCard product={danangTransferProductCard} href={danangTransferProductCard.canonicalPath} />
+          <ProductCard product={guamTransferProductCard} href={guamTransferProductCard.canonicalPath} />
         </div>
       </section>
       <CTASection />
