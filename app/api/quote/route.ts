@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sendQuoteNotification } from "@/lib/email/sendQuoteNotification";
+import { formatQuotePrefillMessage, sanitizeQuotePrefill, type QuotePrefillInput } from "@/lib/quote/prefill";
 import { insertSupabaseRow } from "@/lib/supabase/server";
 
 type QuotePayload = {
@@ -18,6 +19,10 @@ type QuotePayload = {
   email?: string;
   message?: string;
   privacy_agreed: boolean;
+};
+
+type ValidatedQuotePayload = QuotePayload & {
+  quote_prefill?: QuotePrefillInput;
 };
 
 const successMessage = "문의가 접수되었습니다. EXITour 담당자가 여행 일정과 가능 여부를 확인한 뒤 안내드리겠습니다.";
@@ -63,7 +68,32 @@ const toServiceArray = (value: unknown) => {
   return value.filter(isNonEmptyString).map((item) => item.trim());
 };
 
-const validateQuotePayload = (body: Record<string, unknown>): QuotePayload | null => {
+const toQuotePrefill = (value: unknown) => {
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    return undefined;
+  }
+
+  const prefill = sanitizeQuotePrefill(value as QuotePrefillInput);
+  return prefill.productId || prefill.product || prefill.destination || prefill.service || prefill.sourcePath ? prefill : undefined;
+};
+
+const appendPrefillToMessage = (payload: ValidatedQuotePayload): QuotePayload => {
+  const { quote_prefill: quotePrefill, ...quotePayload } = payload;
+  const prefillMessage = formatQuotePrefillMessage(quotePrefill);
+
+  if (!prefillMessage) {
+    return quotePayload;
+  }
+
+  const customerMessage = quotePayload.message?.trim();
+
+  return {
+    ...quotePayload,
+    message: customerMessage ? `${prefillMessage}\n\n[고객 문의 내용]\n${customerMessage}` : prefillMessage,
+  };
+};
+
+const validateQuotePayload = (body: Record<string, unknown>): ValidatedQuotePayload | null => {
   const destinationText = toRequiredString(body.destination_text);
   const startDate = toRequiredString(body.start_date);
   const endDate = toRequiredString(body.end_date);
@@ -116,6 +146,7 @@ const validateQuotePayload = (body: Record<string, unknown>): QuotePayload | nul
     kakao_id: kakaoId,
     email: toOptionalString(body.email),
     message: toOptionalString(body.message),
+    quote_prefill: toQuotePrefill(body.quote_prefill),
     privacy_agreed: privacyAgreed,
   };
 };
@@ -129,7 +160,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: false, message: failureMessage }, { status: 400 });
     }
 
-    const { error } = await insertSupabaseRow<QuotePayload, { id: string }>("quote_requests", payload);
+    const insertPayload = appendPrefillToMessage(payload);
+    const { error } = await insertSupabaseRow<QuotePayload, { id: string }>("quote_requests", insertPayload);
 
     if (error) {
       console.error("Quote insert failed:", {
@@ -156,7 +188,7 @@ export async function POST(request: Request) {
     }
 
     try {
-      await sendQuoteNotification(payload);
+      await sendQuoteNotification(insertPayload);
     } catch (emailError) {
       console.error("Quote notification email failed:", {
         message: emailError instanceof Error ? emailError.message : "Unknown email error",

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQList, InfoBlock } from "@/components/DetailSections";
 import PremiumCTA from "@/components/premium/PremiumCTA";
-import { kazakhstanFaqs, kazakhstanKakaoMessage, privateTourGuide } from "@/lib/mock/kazakhstanPremium";
+import { kazakhstanFaqs, kazakhstanKakaoMessage, kazakhstanQuotePrefills, privateTourGuide } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
@@ -69,7 +70,7 @@ export default function KazakhstanPrivateTourGuidePage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl space-y-8 px-5 py-14 sm:px-6 lg:px-8">
           <FAQList faqs={kazakhstanFaqs} />
-          <PremiumCTA message={kazakhstanKakaoMessage} />
+          <PremiumCTA message={kazakhstanKakaoMessage} href={buildQuoteUrl(kazakhstanQuotePrefills.privateTourConsulting)} />
         </div>
       </section>
     </>

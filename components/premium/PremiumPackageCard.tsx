@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { KazakhstanProduct } from "@/lib/mock/kazakhstanPremium";
+import { buildQuoteUrl } from "@/lib/quote/prefill";
 
 const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value);
 
 export default function PremiumPackageCard({ product }: { product: KazakhstanProduct }) {
   const isAvailable = product.status === "available";
-  const href = isAvailable ? product.canonicalPath : "/quote";
+  const href = isAvailable ? product.canonicalPath : buildQuoteUrl(product.quotePrefill ?? {});
 
   return (
     <Link
