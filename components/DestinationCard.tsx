@@ -2,10 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Destination } from "@/lib/data";
 
-export default function DestinationCard({ destination }: { destination: Destination }) {
+type DestinationCardProps = {
+  destination: Destination & {
+    href?: string;
+  };
+};
+
+export default function DestinationCard({ destination }: DestinationCardProps) {
+  const href = destination.href ?? `/destinations/${destination.countrySlug}/${destination.citySlug}`;
+
   return (
     <Link
-      href={`/destinations/${destination.countrySlug}/${destination.citySlug}`}
+      href={href}
       className="group block overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <div className="aspect-[4/3] overflow-hidden bg-slate-200">

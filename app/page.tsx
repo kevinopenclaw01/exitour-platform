@@ -5,10 +5,31 @@ import DestinationCard from "@/components/DestinationCard";
 import FAQSection from "@/components/FAQSection";
 import HotelCard from "@/components/HotelCard";
 import ProductCard from "@/components/ProductCard";
-import { destinations, hotels, products } from "@/lib/data";
+import { destinations, hotels, products, type Destination } from "@/lib/data";
+
+const featuredDestinationOrder = ["danang", "bohol", "boracay", "guam", "nha-trang", "kazakhstan"];
+
+const getFeaturedDestinations = () =>
+  featuredDestinationOrder
+    .map((id) => destinations.find((destination) => destination.id === id))
+    .filter((destination): destination is Destination => Boolean(destination))
+    .map((destination) =>
+      destination.id === "kazakhstan"
+        ? {
+            ...destination,
+            href: "/kazakhstan",
+            country: "카자흐스탄",
+            name: "카자흐스탄",
+            summary: "알마티에서 시작하는 설산, 호수, 캐년, 사막의 프리미엄 프라이빗 자연여행",
+            bestFor: ["프리미엄", "전용차량", "가이드동행"],
+            season: "4월-10월 또는 상담 후 안내",
+            flightTime: "장거리 자연여행 / 상담형 일정",
+          }
+        : destination,
+    );
 
 export default function Home() {
-  const featuredDestinations = destinations.slice(0, 6);
+  const featuredDestinations = getFeaturedDestinations();
   const featuredProducts = products.slice(0, 4);
   const featuredHotels = hotels.slice(0, 3);
 
