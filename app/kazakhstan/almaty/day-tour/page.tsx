@@ -14,7 +14,7 @@ export function generateMetadata(): Metadata {
 }
 
 export default function AlmatyDayTourPage() {
-  const products = kazakhstanProducts.filter((product) => product.productType === "day-tour");
+  const products = kazakhstanProducts.filter((product) => product.productType === "day-tour" && product.id !== "kazakhstan-altyn-emel");
 
   return (
     <>
