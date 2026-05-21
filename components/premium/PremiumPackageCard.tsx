@@ -7,6 +7,7 @@ const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value
 export default function PremiumPackageCard({ product }: { product: KazakhstanProduct }) {
   const isAvailable = product.status === "available";
   const href = isAvailable ? product.canonicalPath : buildQuoteUrl(product.quotePrefill ?? {});
+  const serviceLevelLabel = product.serviceLevel === "join" ? "Join Group" : "Premium Private";
 
   return (
     <Link
@@ -14,7 +15,7 @@ export default function PremiumPackageCard({ product }: { product: KazakhstanPro
       className="flex h-full flex-col rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-300 hover:shadow-md"
     >
       <div className="flex flex-wrap gap-2">
-        <span className="rounded-md bg-cyan-50 px-3 py-1.5 text-xs font-black text-cyan-800">{product.serviceLevel}</span>
+        <span className="rounded-md bg-cyan-50 px-3 py-1.5 text-xs font-black text-cyan-800">{serviceLevelLabel}</span>
         <span className="rounded-md bg-slate-100 px-3 py-1.5 text-xs font-black text-slate-700">
           {isAvailable ? "상세 보기" : product.status === "inquiry" ? "상담 문의" : "상세 준비 중"}
         </span>

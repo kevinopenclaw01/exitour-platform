@@ -48,7 +48,7 @@ const jsonLd = [
 ];
 
 export default function KazakhstanPage() {
-  const featuredProducts = kazakhstanProducts.filter((product) => product.status === "available");
+  const featuredProducts = kazakhstanProducts.filter((product) => product.status === "available" && product.productType !== "join-tour");
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function KazakhstanPage() {
         eyebrow="Kazakhstan Premium Private"
         title="카자흐스탄 프리미엄 프라이빗 여행"
         description="일반 저가 패키지나 렌트카 상품이 아니라, 알마티를 중심으로 설산, 호수, 캐년, 국립공원, 시티투어를 전용차량과 가이드 동행으로 여행하는 고가 프리미엄 자연여행입니다."
-        imagePath="/images/kazakhstan/almaty-hero.jpg"
+        imagePath="/images/kazakhstan/kazakhstan-main-hero.png"
         meta={["전용차량", "가이드 동행", "식사 포함", "호텔 선택형", "렌트카 제외"]}
       />
       <section className="bg-slate-50">

@@ -1,8 +1,9 @@
 import type { FAQ, Product } from "@/lib/data";
+import { altynEmelProducts } from "@/lib/mock/kazakhstanAltynEmel";
 import type { QuotePrefillInput } from "@/lib/quote/prefill";
 
-export type KazakhstanProductType = "private-package" | "day-tour" | "airport-transfer";
-export type KazakhstanServiceLevel = "premium";
+export type KazakhstanProductType = "private-package" | "day-tour" | "join-tour" | "airport-transfer";
+export type KazakhstanServiceLevel = "premium" | "join";
 export type ProductStatus = "available" | "coming-soon" | "inquiry";
 
 export type KazakhstanProduct = {
@@ -115,11 +116,13 @@ export const kazakhstanQuotePrefills = {
 export const productTypes = [
   { id: "private-package", label: "프리미엄 프라이빗 패키지", path: "/kazakhstan/almaty/private-package" },
   { id: "day-tour", label: "프라이빗 당일투어", path: "/kazakhstan/almaty/day-tour" },
+  { id: "join-tour", label: "조인 그룹투어", path: "/kazakhstan/almaty/join-tour" },
   { id: "airport-transfer", label: "공항 픽업·샌딩 문의", path: "/kazakhstan/almaty/airport-transfer" },
 ];
 
 export const serviceLevels = [
   { id: "premium", label: "Premium Private", description: "전용차량, 가이드, 식사 동선을 고객 일정에 맞춰 조합하는 단독 여행" },
+  { id: "join", label: "Join Group", description: "현지 운영 일정과 모객 상황에 따라 함께 출발하는 조인형 자연투어" },
 ];
 
 export const premiumPackageCountries = [
@@ -391,6 +394,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     faqs: kazakhstanFaqs,
     relatedProductIds: ["kazakhstan-3n5d-premium"],
   },
+  ...altynEmelProducts,
 ];
 
 export const privateTourGuide = {
@@ -451,7 +455,7 @@ export const toProductCard = (product: KazakhstanProduct): Product & { canonical
   region: "카자흐스탄 알마티",
   countrySlugs: ["kazakhstan"],
   citySlugs: ["almaty"],
-  category: product.productType === "day-tour" ? "tour" : "package",
+  category: product.productType === "private-package" ? "package" : "tour",
   destinationScope: "카자흐스탄",
   summary: product.summary,
   description: product.summary,
