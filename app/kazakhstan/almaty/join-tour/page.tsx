@@ -24,7 +24,7 @@ export default function AlmatyJoinTourPage() {
         eyebrow="Almaty Join Tours"
         title="알마티 조인 그룹투어"
         description="혼자 또는 소수 인원도 참여 가능한 카자흐스탄 현지 조인형 자연투어입니다. 출발 가능 여부는 날짜와 모객 상황에 따라 상담 후 안내됩니다."
-        imagePath="/images/kazakhstan/altyn-emel.jpg"
+        imagePath="/images/kazakhstan/altyn-emel-join-tour-hero.png"
         meta={["조인 그룹투어", "출발 가능일 확인", "가이드 동행", "상담 후 가격 안내"]}
       />
       <section className="bg-slate-50">

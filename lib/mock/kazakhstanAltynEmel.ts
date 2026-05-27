@@ -191,7 +191,7 @@ export const altynEmelProducts: KazakhstanProduct[] = [
     priceFromKrw: 0,
     minRecommendedPeople: 2,
     status: "available",
-    imagePath: "/images/kazakhstan/altyn-emel.jpg",
+    imagePath: "/images/kazakhstan/altyn-emel-private-tour-hero.png",
     highlights: ["알틴에멜 국립공원", "노래하는 사구", "악타우 산맥", "전용차량+가이드"],
     recommendedFor: ["가족 또는 부모님 동반 여행", "단독 일정과 여유 있는 동선을 원하는 고객", "장거리 자연 코스를 안전하게 보고 싶은 고객"],
     includes: privateIncludes,
