@@ -19,14 +19,15 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export function generateMetadata(): Metadata {
   return {
-    title: "카자흐스탄 프리미엄 프라이빗 여행 | EXITour",
-    description: "알마티를 중심으로 설산, 호수, 캐년, 국립공원, 시티투어를 전용차량과 가이드 동행으로 여행하는 고가 프리미엄 프라이빗 자연여행입니다.",
+    title: "카자흐스탄 알마티 | 단독·조인 프리미엄 투어 | EXITour",
+    description:
+      "설산, 호수, 캐년, 국립공원까지 알마티의 자연을 전용차량과 전담 가이드로 깊이 있게 경험하는 프리미엄 투어입니다. 단독투어와 소수 정예 조인투어 중 선택할 수 있습니다.",
     alternates: { canonical: "/kazakhstan" },
   };
 }
 
 const jsonLd = [
-  { "@context": "https://schema.org", "@type": "TouristDestination", name: "카자흐스탄 프리미엄 프라이빗 여행", url: `${siteUrl}/kazakhstan` },
+  { "@context": "https://schema.org", "@type": "TouristDestination", name: "카자흐스탄 알마티 | 단독·조인 프리미엄 투어", url: `${siteUrl}/kazakhstan` },
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -47,6 +48,13 @@ const jsonLd = [
   },
 ];
 
+const kazakhstanMainGuideNotice = [
+  "모든 일정은 한국어 가이드가 동행합니다.",
+  "단독투어는 4인 이상부터 진행 가능합니다. 기본적으로 정해진 동선과 일정에 따라 진행되며, 원하시는 일정이 있으실 경우 상담 후 맞춤 구성도 가능합니다.",
+  "조인투어는 1인부터 참여 가능합니다.",
+  "카자흐스탄 프리미엄 패키지 요금은 인원, 일정, 호텔 등급, 차량 조건에 따라 달라집니다. 정확한 요금은 희망 일정과 인원 확인 후 안내드립니다.",
+];
+
 export default function KazakhstanPage() {
   const featuredProducts = kazakhstanProducts.filter((product) => product.status === "available" && product.productType !== "join-tour");
 
@@ -56,9 +64,9 @@ export default function KazakhstanPage() {
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
       <KazakhstanHero
-        eyebrow="Kazakhstan Premium Private"
-        title="카자흐스탄 프리미엄 프라이빗 여행"
-        description="일반 저가 패키지나 렌트카 상품이 아니라, 알마티를 중심으로 설산, 호수, 캐년, 국립공원, 시티투어를 전용차량과 가이드 동행으로 여행하는 고가 프리미엄 자연여행입니다."
+        eyebrow="Kazakhstan Almaty"
+        title="카자흐스탄 알마티 | 단독·조인 프리미엄 투어"
+        description="설산, 호수, 캐년, 국립공원까지 — 알마티의 자연을 전용차량과 전담 가이드로 깊이 있게 경험하는 프리미엄 투어입니다. 내 일정에 맞춘 단독투어(자유 패키지·데이투어)와 소수 정예 조인투어 중 선택하실 수 있으며, 개인 일정과 취향에 따라 상담 후 맞춤 구성도 가능합니다."
         imagePath="/images/kazakhstan/kazakhstan-main-hero.png"
         meta={["전용차량", "가이드 동행", "식사 포함", "호텔 선택형", "렌트카 제외"]}
       />
@@ -77,7 +85,7 @@ export default function KazakhstanPage() {
           <InfoBlock title="왜 가이드 동행이 필요한가요?">
             <BulletList items={["장거리 이동이 많습니다.", "일부 자연 지역은 비포장 도로가 포함됩니다.", "외곽 지역은 인터넷이 불안정할 수 있습니다.", "언어 문제와 현지 소통 때문에 일정 변경 대응이 중요합니다."]} />
           </InfoBlock>
-          <KazakhstanGuideNotice />
+          <KazakhstanGuideNotice title="가이드 언어와 요금 안내" paragraphs={kazakhstanMainGuideNotice} />
         </div>
       </section>
       <section className="bg-slate-50">
