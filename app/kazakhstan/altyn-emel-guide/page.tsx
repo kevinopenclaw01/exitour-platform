@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FAQList, InfoBlock } from "@/components/DetailSections";
+import AltynEmelComparisonImage from "@/components/kazakhstan/AltynEmelComparisonImage";
 import {
   altynEmelFaqs,
   altynEmelGuide,
@@ -76,6 +77,9 @@ export default function AltynEmelGuidePage() {
               <p>{section.body}</p>
             </InfoBlock>
           ))}
+        </div>
+        <div className="mx-auto max-w-7xl px-5 pb-14 sm:px-6 lg:px-8">
+          <AltynEmelComparisonImage />
         </div>
       </section>
       <section className="bg-white">

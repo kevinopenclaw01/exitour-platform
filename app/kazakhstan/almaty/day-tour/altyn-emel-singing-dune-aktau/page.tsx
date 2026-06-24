@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BulletList, FAQList, InfoBlock, NumberedList } from "@/components/DetailSections";
+import AltynEmelComparisonImage from "@/components/kazakhstan/AltynEmelComparisonImage";
 import KazakhstanGuideNotice from "@/components/kazakhstan/KazakhstanGuideNotice";
 import KazakhstanHero from "@/components/kazakhstan/KazakhstanHero";
 import PremiumCTA from "@/components/premium/PremiumCTA";
@@ -123,6 +124,7 @@ export default function AltynEmelPrivateTourPage() {
       <section className="bg-white">
         <div className="mx-auto max-w-7xl space-y-8 px-5 py-14 sm:px-6 lg:px-8">
           <FAQList faqs={product.faqs} />
+          <AltynEmelComparisonImage />
           <PremiumCTA message={altynEmelPrivateTourMessage} href={buildQuoteUrl(product.quotePrefill ?? {})} />
           <div className="grid gap-3 sm:grid-cols-2">
             <Link className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-slate-100" href="/kazakhstan/altyn-emel-guide">
