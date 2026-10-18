@@ -44,3 +44,6 @@ next-env.d.ts
 .next-dev.log
 .next-dev.err
 
+
+# idea-court skill trial records
+/idea-court-cases/
