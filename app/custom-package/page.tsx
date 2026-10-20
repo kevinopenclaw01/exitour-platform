@@ -25,15 +25,14 @@ export default function CustomPackagePage() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:px-8">
           <div>
-            <p className="text-sm font-bold text-cyan-700">Custom Package</p>
-            <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+            <h1 className="mt-3 max-w-3xl text-4xl display text-slate-950 sm:text-5xl">
               우리 가족에게 맞는 일정만 남기는 맞춤 패키지
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
               EXITour의 맞춤 패키지는 단체 일정표를 그대로 따라가는 방식이 아닙니다. 항공 시간이 늦은 가족, 조용한 풀빌라를 원하는 커플, 이동을 줄이고 싶은 부모님 여행처럼 실제 조건을 기준으로 설계합니다.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/quote" className="rounded-md bg-slate-950 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-slate-800">
+              <Link href="/quote" className="rounded-md bg-signal px-5 py-3 text-center text-sm font-bold text-ink transition-colors hover:bg-signal-hover">
                 맞춤 견적 요청
               </Link>
               <Link href="/products" className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-slate-100">
@@ -54,8 +53,7 @@ export default function CustomPackagePage() {
       </section>
       <section className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold text-cyan-700">추천 상담 유형</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">이런 여행을 잘 맞춥니다</h2>
+          <h2 className="mt-3 text-3xl display text-slate-950 sm:text-4xl">이런 여행을 잘 맞춥니다</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {packageTypes.map((type) => (
               <div key={type} className="rounded-lg border border-slate-200 bg-white p-5">

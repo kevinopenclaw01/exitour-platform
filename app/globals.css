@@ -1,30 +1,169 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+/*
+  EXITour 디자인 토큰 (2026-10 수하물 태그 리디자인)
+  - slate·cyan 눈금을 브랜드 색으로 바꿔 둔다. 기존 페이지의 text-slate-600, text-cyan-700 같은
+    클래스가 그대로 브랜드 색으로 그려진다. 새 코드는 아래 이름(ink, cobalt, signal…)을 쓴다.
+  - 설명서: 웹사이트\EXITour 홈페이지\DESIGN.md
+*/
+@theme {
+  --color-paper: #f3f5fa;
+  --color-ink: #0f1838;
+  --color-cobalt: #2340d8;
+  --color-cobalt-deep: #1a2fa6;
+  --color-signal: #ffd23f;
+  --color-signal-hover: #ffc410;
+  --color-line: #d6dcea;
+  --color-muted: #46527a;
+
+  /* 남색 기운 중립색 (기존 slate 대체) */
+  --color-slate-50: #f3f5fa;
+  --color-slate-100: #e7ebf4;
+  --color-slate-200: #d6dcea;
+  --color-slate-300: #bcc5da;
+  --color-slate-400: #8f9ab8;
+  --color-slate-500: #5b6789;
+  --color-slate-600: #46527a;
+  --color-slate-700: #343f66;
+  --color-slate-800: #232d52;
+  --color-slate-900: #172046;
+  --color-slate-950: #0f1838;
+
+  /* 코발트 (기존 cyan 대체) */
+  --color-cyan-50: #eef1fe;
+  --color-cyan-100: #dde3fd;
+  --color-cyan-200: #bcc8fb;
+  --color-cyan-300: #93a6f8;
+  --color-cyan-400: #6681f2;
+  --color-cyan-500: #3f5ce6;
+  --color-cyan-600: #2340d8;
+  --color-cyan-700: #2340d8;
+  --color-cyan-800: #1a2fa6;
+  --color-cyan-900: #14247d;
+
+  --font-sans: var(--font-body), "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-display: var(--font-headline), var(--font-body), "Malgun Gothic", sans-serif;
+  --font-code: var(--font-archivo), "Arial Narrow", sans-serif;
+
+  --font-weight-black: 800;
+  --tracking-tight: -0.01em;
+
+  --shadow-sm: 0 1px 2px rgb(15 24 56 / 0.06);
+  --shadow-md: 0 6px 16px -6px rgb(15 24 56 / 0.18);
+  --shadow-tag: 0 2px 0 rgb(15 24 56 / 0.08), 0 14px 28px -14px rgb(15 24 56 / 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-cobalt);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .on-cobalt :focus-visible,
+  .bg-slate-950 :focus-visible {
+    outline-color: var(--color-signal);
+  }
+
+  input,
+  select,
+  textarea {
+    accent-color: var(--color-cobalt);
+    caret-color: var(--color-cobalt);
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+  }
+
+  html {
+    scrollbar-color: var(--color-slate-300) var(--color-paper);
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+@layer components {
+  /* 한글 큰 제목: 표지판 같은 굵은 서체 */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    line-height: 1.12;
+  }
+
+  /* 공항 코드·숫자 */
+  .code {
+    font-family: var(--font-code);
+    font-variation-settings: "wdth" 62;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    line-height: 0.86;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .num {
+    font-family: var(--font-code);
+    font-variation-settings: "wdth" 80;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 수하물 태그: 위쪽 끈 구멍 + 절취선 */
+  .tag {
+    position: relative;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: var(--shadow-tag);
+  }
+
+  .tag-hole::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 18px;
+    height: 18px;
+    margin-left: -9px;
+    border-radius: 999px;
+    background: var(--hole-bg, var(--color-paper));
+    box-shadow: inset 0 1px 2px rgb(15 24 56 / 0.25);
+  }
+
+  .tag-perf {
+    border-top: 2px dashed var(--color-line);
+  }
 }
 
-::selection {
-  background: #67e8f9;
-  color: #0f172a;
-}
-
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 2px solid #168468;
-  outline-offset: 4px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

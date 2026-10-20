@@ -7,8 +7,7 @@ export default function HotelsPage() {
     <>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold text-cyan-700">Hotels</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-4xl display text-slate-950 sm:text-5xl">
             일정 동선까지 고려한 계약 호텔 특가
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">

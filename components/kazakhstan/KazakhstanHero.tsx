@@ -4,42 +4,45 @@ import { join } from "path";
 
 const publicFileExists = (imagePath: string) => existsSync(join(process.cwd(), "public", imagePath.replace(/^\//, "")));
 
+// 카자흐스탄 상품 머리: 남색 면 + 알마티 공항 코드. eyebrow는 예전 페이지 호환용으로만 받는다.
 export default function KazakhstanHero({
-  eyebrow,
   title,
   description,
   imagePath,
   meta,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   description: string;
   imagePath: string;
   meta?: string[];
 }) {
-  const hasImage = publicFileExists(imagePath);
+  // 상품별 사진이 아직 없으면 카자흐스탄 대표 사진을 쓴다.
+  const fallbackImage = "/images/kazakhstan/kazakhstan-main-hero.png";
+  const resolvedImage = publicFileExists(imagePath) ? imagePath : fallbackImage;
+  const hasImage = publicFileExists(resolvedImage);
 
   return (
-    <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
+    <section className="on-cobalt bg-ink text-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-16">
         <div>
-          <p className="text-sm font-black text-cyan-700">{eyebrow}</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">{title}</h1>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">{description}</p>
+          <p className="code text-6xl text-signal" aria-hidden="true">ALA</p>
+          <h1 className="display mt-4 max-w-4xl text-[2.25rem] sm:text-5xl">{title}</h1>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-slate-300 sm:text-lg">{description}</p>
           {meta ? (
-            <div className="mt-6 flex flex-wrap gap-2">
+            <ul className="mt-7 flex flex-wrap gap-2">
               {meta.map((item) => (
-                <span key={item} className="rounded-md bg-slate-100 px-3 py-1.5 text-sm font-black text-slate-700">
+                <li key={item} className="rounded-full border-2 border-white/25 px-3.5 py-1 text-sm font-medium text-white">
                   {item}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           ) : null}
         </div>
-        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg bg-slate-200 shadow-sm">
+        <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-md bg-slate-800">
           {hasImage ? (
             <TravelImage
-              src={imagePath}
+              src={resolvedImage}
               alt={title}
               fill
               preload
@@ -47,11 +50,12 @@ export default function KazakhstanHero({
               sizes="(min-width: 1024px) 45vw, 100vw"
               fallbackTitle="카자흐스탄 프리미엄 자연 여행"
               fallbackDescription="산, 캐년, 호수, 사막을 연결하는 전용차량 프라이빗 투어"
+              fallbackClassName="bg-slate-800"
             />
           ) : (
             <div className="px-6 text-center">
-              <p className="text-lg font-black text-slate-800">카자흐스탄 프리미엄 자연 여행</p>
-              <p className="mt-3 text-sm leading-6 text-slate-600">산, 캐년, 호수, 사막을 연결하는 전용차량 프라이빗 투어</p>
+              <p className="display text-2xl text-white">카자흐스탄 프리미엄 자연 여행</p>
+              <p className="mt-3 text-sm leading-6 text-slate-300">산, 캐년, 호수, 사막을 연결하는 전용차량 프라이빗 투어</p>
             </div>
           )}
         </div>

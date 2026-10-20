@@ -15,8 +15,7 @@ export function generateMetadata(): Metadata {
 export default function AlmatyAirportTransferPage() {
   return (
     <>
-      <KazakhstanHero
-        eyebrow="Almaty Airport Transfer"
+      <KazakhstanHero
         title="알마티 공항 픽업·샌딩 상담"
         description="알마티 공항 도착/출발 시간, 호텔 위치, 인원, 수하물, 가이드 필요 여부에 따라 전용차량 이동을 상담합니다."
         imagePath="/images/kazakhstan/almaty-hero.jpg"

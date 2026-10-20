@@ -93,8 +93,7 @@ export default function KazakhstanThreeNightPremiumPage() {
       {jsonLd.map((item) => (
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
-      <KazakhstanHero
-        eyebrow="Kazakhstan Launch Product"
+      <KazakhstanHero
         title={product.title}
         description={product.summary}
         imagePath={product.imagePath}

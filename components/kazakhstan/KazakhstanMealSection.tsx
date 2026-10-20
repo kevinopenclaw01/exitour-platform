@@ -27,8 +27,7 @@ export default function KazakhstanMealSection({ primaryPlanId }: KazakhstanMealS
   return (
     <section className="min-w-0 space-y-7 lg:col-span-2">
       <div className="max-w-3xl">
-        <p className="text-sm font-black text-cyan-700">Almaty Meal Plan</p>
-        <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">알마티 식사, 일정에 맞게 더 알차게 준비했습니다</h2>
+        <h2 className="mt-3 text-3xl display text-slate-950 sm:text-4xl">알마티 식사, 일정에 맞게 더 알차게 준비했습니다</h2>
         <p className="mt-4 text-base leading-8 text-slate-600">
           현지식이 낯선 고객도 부담 없이 즐길 수 있도록 기본 식사 구성과 특식 강화 구성을 나누어 안내드립니다.
         </p>
@@ -88,9 +87,6 @@ export default function KazakhstanMealSection({ primaryPlanId }: KazakhstanMealS
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {kazakhstanMealMenuCards.map((item) => (
             <div key={item.title} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
-              <div className="mb-4 flex h-20 items-center justify-center rounded-md bg-gradient-to-br from-slate-50 to-amber-50 text-xs font-black text-slate-400">
-                메뉴 이미지 준비 중
-              </div>
               <h4 className="text-base font-black text-slate-950">{item.title}</h4>
               <p className="mt-2 text-sm leading-7 text-slate-600">{item.description}</p>
             </div>

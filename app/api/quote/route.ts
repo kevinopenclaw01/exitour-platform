@@ -26,7 +26,8 @@ type ValidatedQuotePayload = QuotePayload & {
 };
 
 const successMessage = "문의가 접수되었습니다. EXITour 담당자가 여행 일정과 가능 여부를 확인한 뒤 안내드리겠습니다.";
-const failureMessage = "입력값을 확인해 주세요.";
+const failureMessage = "입력값을 확인해 주세요. 여행지, 날짜, 성인 수, 이름, 연락처(전화 또는 카카오톡 ID), 개인정보 동의가 필요합니다.";
+const saveFailureMessage = "지금 접수 서버에 문제가 있어 요청이 저장되지 않았습니다. 전화 010-5934-2629 또는 카카오톡 exitouroffice로 연락해 주세요.";
 
 const isNonEmptyString = (value: unknown): value is string =>
   typeof value === "string" && value.trim().length > 0;
@@ -184,7 +185,7 @@ export async function POST(request: Request) {
               table: "quote_requests",
             };
 
-      return NextResponse.json({ ok: false, message: failureMessage, debug }, { status: 500 });
+      return NextResponse.json({ ok: false, message: saveFailureMessage, debug }, { status: 503 });
     }
 
     try {
@@ -199,6 +200,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true, message: successMessage });
   } catch (error) {
     console.error("Quote route failed:", error);
-    return NextResponse.json({ ok: false, message: failureMessage }, { status: 500 });
+    return NextResponse.json({ ok: false, message: saveFailureMessage }, { status: 500 });
   }
 }

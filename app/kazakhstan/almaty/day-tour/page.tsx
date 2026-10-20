@@ -18,8 +18,7 @@ export default function AlmatyDayTourPage() {
 
   return (
     <>
-      <KazakhstanHero
-        eyebrow="Almaty Private Day Tours"
+      <KazakhstanHero
         title="알마티 프리미엄 프라이빗 당일투어"
         description="알마티에서 출발하는 대표 자연 명소를 전용차량과 가이드 동행으로 안전하게 연결합니다."
         imagePath="/images/kazakhstan/charyn-canyon.jpg"

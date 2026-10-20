@@ -50,7 +50,6 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="Product Detail"
         title={product.title}
         description={product.description}
         meta={[product.region, product.category, `${formatKrw(product.priceFromKrw)}원~`, product.duration]}
@@ -94,7 +93,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">상품 FAQ</h2>
+          <h2 className="text-3xl display text-slate-950">상품 FAQ</h2>
           <div className="mt-8">
             <FAQList faqs={product.faqs} />
           </div>
@@ -104,7 +103,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
       {relatedProducts.length > 0 ? (
         <section className="bg-slate-50">
           <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-black tracking-tight text-slate-950">관련 상품</h2>
+            <h2 className="text-3xl display text-slate-950">관련 상품</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {relatedProducts.map((related) => (
                 <ProductCard key={related.id} product={related} />

@@ -8,8 +8,7 @@ export default function DestinationsPage() {
     <>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold text-cyan-700">Destinations</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-4xl display text-slate-950 sm:text-5xl">
             한국인 여행자에게 검증된 프리미엄 목적지
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
@@ -19,7 +18,7 @@ export default function DestinationsPage() {
       </section>
       <section className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-black tracking-tight text-slate-950">국가별로 보기</h2>
+          <h2 className="text-2xl display text-slate-950">국가별로 보기</h2>
           <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
             {countries.map((country) => (
               <Link

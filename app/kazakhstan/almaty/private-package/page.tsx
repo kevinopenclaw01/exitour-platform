@@ -18,8 +18,7 @@ export default function AlmatyPrivatePackagePage() {
 
   return (
     <>
-      <KazakhstanHero
-        eyebrow="Almaty Private Packages"
+      <KazakhstanHero
         title="알마티 프리미엄 프라이빗 패키지"
         description="2일 이상 카자흐스탄 자연 여행을 전용차량과 가이드 동행으로 상담합니다."
         imagePath="/images/kazakhstan/premium-private-tour.jpg"

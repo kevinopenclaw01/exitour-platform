@@ -20,8 +20,7 @@ export default function AlmatyJoinTourPage() {
 
   return (
     <>
-      <KazakhstanHero
-        eyebrow="Almaty Join Tours"
+      <KazakhstanHero
         title="알마티 조인 그룹투어"
         description="혼자 또는 소수 인원도 참여 가능한 카자흐스탄 현지 조인형 자연투어입니다. 출발 가능 여부는 날짜와 모객 상황에 따라 상담 후 안내됩니다."
         imagePath="/images/kazakhstan/altyn-emel-join-tour-hero.png"

@@ -74,8 +74,7 @@ export default function AltynEmelJoinTourPage() {
       {jsonLd.map((item) => (
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item).replace(/</g, "\\u003c") }} />
       ))}
-      <KazakhstanHero
-        eyebrow="Almaty Join Nature Tour"
+      <KazakhstanHero
         title="알틴에멜 조인 투어"
         description="악타우 산맥과 노래하는 사구를 함께 만나는 알마티 출발 자연투어"
         imagePath={product.imagePath}

@@ -69,8 +69,7 @@ export default async function CityDetailPage({ params }: CityPageProps) {
 
   return (
     <>
-      <PageHero
-        eyebrow="City Guide"
+      <PageHero
         title={`${destination.name} 여행 가이드`}
         description={destination.guide}
         meta={[destination.country, destination.season, destination.flightTime, ...destination.bestFor]}
@@ -95,7 +94,7 @@ export default async function CityDetailPage({ params }: CityPageProps) {
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">해당 도시 상품</h2>
+          <h2 className="text-3xl display text-slate-950">해당 도시 상품</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {visibleCityProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
@@ -107,7 +106,7 @@ export default async function CityDetailPage({ params }: CityPageProps) {
       {cityHotels.length > 0 ? (
         <section className="bg-slate-50">
           <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-black tracking-tight text-slate-950">해당 도시 호텔</h2>
+            <h2 className="text-3xl display text-slate-950">해당 도시 호텔</h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {cityHotels.map((hotel) => (
                 <HotelCard key={hotel.id} hotel={hotel} />

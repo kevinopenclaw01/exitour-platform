@@ -450,7 +450,7 @@ export const destinations: Destination[] = [
     transferInfo: "알마티 공항에서 도심까지 차량으로 약 30-50분 이동합니다.",
     familyTips: ["자연 투어는 차량 시간이 길어 간식과 휴식 준비", "고산 지역은 날씨 변화 대비"],
     faqs: [{ question: "카자흐스탄은 비자가 필요한가요?", answer: "여권과 체류 조건은 출발 전 최신 기준 확인이 필요합니다." }],
-    imageUrl: "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "/images/home/kazakhstan-nature-editorial.png",
   },
   {
     id: "europe",

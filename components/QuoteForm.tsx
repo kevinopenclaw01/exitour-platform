@@ -17,7 +17,7 @@ type FormStatus = {
 };
 
 const fieldClass =
-  "rounded-md border border-slate-300 px-3 py-3 font-medium text-slate-700 outline-none focus:border-cyan-500";
+  "min-h-12 rounded-md border-2 border-line bg-white px-3 py-2.5 text-base text-ink outline-none transition-colors placeholder:text-slate-500 hover:border-slate-400 focus:border-cobalt";
 
 const parseBudget = (value: FormDataEntryValue | null) => {
   if (typeof value !== "string") {
@@ -115,22 +115,26 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
       event.currentTarget.reset();
       setStatus({ type: "success", message: result.message });
     } catch {
-      setStatus({ type: "error", message: "입력값을 확인해 주세요." });
+      setStatus({ type: "error", message: "연결이 끊겨 보내지 못했습니다. 다시 눌러 주시거나 전화 010-5934-2629로 연락해 주세요." });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-10 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
+    <form onSubmit={handleSubmit} className="tag mt-10 p-5 sm:p-8">
       {hasPrefill ? (
-        <section className="mb-6 rounded-lg border border-cyan-200 bg-cyan-50 p-4">
-          <p className="text-sm font-black text-cyan-900">자동 입력된 상담 정보</p>
+        <section className="mb-6 rounded-md border-2 border-cyan-200 bg-cyan-50 p-4">
+          <p className="text-sm font-bold text-cyan-900">앞 화면에서 고른 내용이 들어가 있습니다. 고쳐도 됩니다.</p>
           <div className="mt-3 grid gap-4 md:grid-cols-2">
-            <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
-              상품명
-              <input name="prefill_product" type="text" defaultValue={prefill?.product ?? ""} className={fieldClass} />
-            </label>
+            {prefill?.product ? (
+              <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
+                상품명
+                <input name="prefill_product" type="text" defaultValue={prefill.product} className={fieldClass} />
+              </label>
+            ) : (
+              <input name="prefill_product" type="hidden" value="" readOnly />
+            )}
             <label className="flex flex-col gap-2 text-sm font-bold text-slate-800">
               문의 유형
               <input name="prefill_service" type="text" defaultValue={prefill?.service ?? ""} className={fieldClass} />
@@ -217,21 +221,21 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
           {serviceOptions.map((service) => (
             <label
               key={service}
-              className="flex items-center gap-2 rounded-md border border-slate-200 bg-slate-50 px-3 py-3 text-sm font-semibold text-slate-700"
+              className="flex min-h-12 cursor-pointer items-center gap-2.5 rounded-md border-2 border-line px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:border-slate-400 has-[:checked]:border-cobalt has-[:checked]:bg-cyan-50"
             >
               <input
                 name="requested_services"
                 value={service}
                 type="checkbox"
                 defaultChecked={serviceValue === service}
-                className="h-4 w-4 accent-cyan-600"
+                className="h-4 w-4 accent-cobalt"
               />
               {service}
             </label>
           ))}
           {serviceValue && !serviceOptions.includes(serviceValue) ? (
             <label className="flex items-center gap-2 rounded-md border border-cyan-200 bg-cyan-50 px-3 py-3 text-sm font-semibold text-slate-700">
-              <input name="requested_services" value={serviceValue} type="checkbox" defaultChecked className="h-4 w-4 accent-cyan-600" />
+              <input name="requested_services" value={serviceValue} type="checkbox" defaultChecked className="h-4 w-4 accent-cobalt" />
               {serviceValue}
             </label>
           ) : null}
@@ -248,16 +252,16 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
         />
       </label>
 
-      <label className="mt-6 flex items-start gap-3 rounded-md bg-slate-50 p-4 text-sm font-semibold leading-6 text-slate-700">
-        <input name="privacy_agreed" type="checkbox" required className="mt-1 h-4 w-4 accent-cyan-600" />
+      <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-md bg-paper p-4 text-sm font-medium leading-6 text-ink">
+        <input name="privacy_agreed" type="checkbox" required className="mt-1 h-4 w-4 accent-cobalt" />
         개인정보 수집 및 상담 목적 이용에 동의합니다.
       </label>
 
       {status.type !== "idle" ? (
         <div
-          role="status"
+          role={status.type === "error" ? "alert" : "status"}
           className={`mt-6 rounded-md px-4 py-3 text-sm font-bold ${
-            status.type === "success" ? "bg-cyan-50 text-cyan-900" : "bg-red-50 text-red-700"
+            status.type === "success" ? "bg-cyan-50 text-cyan-900" : "border-2 border-red-200 bg-red-50 text-red-800"
           }`}
         >
           {status.message}
@@ -267,9 +271,9 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-6 w-full rounded-md bg-slate-950 px-5 py-4 text-sm font-black text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+        className="mt-6 min-h-14 w-full rounded-md bg-signal px-5 py-4 text-base font-bold text-ink transition-colors hover:bg-signal-hover disabled:cursor-not-allowed disabled:bg-slate-200 disabled:text-slate-500"
       >
-        {isSubmitting ? "접수 중입니다..." : "상담 요청 접수하기"}
+        {isSubmitting ? "접수하는 중…" : "견적 요청 보내기"}
       </button>
     </form>
   );

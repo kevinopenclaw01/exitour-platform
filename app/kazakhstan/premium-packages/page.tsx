@@ -36,8 +36,7 @@ export default function KazakhstanPremiumPackagesPage() {
       {jsonLd.map((item) => (
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
-      <KazakhstanHero
-        eyebrow="Kazakhstan Premium Packages"
+      <KazakhstanHero
         title="카자흐스탄 3박 5일 대표 프리미엄 패키지"
         description="알마티 3박 5일 대표 상품을 우선으로, 전용차량과 가이드 동행, 식사 포함, 호텔 선택형 구조의 프리미엄 프라이빗 자연여행을 상담합니다."
         imagePath="/images/kazakhstan/premium-private-tour.jpg"
@@ -55,7 +54,7 @@ export default function KazakhstanPremiumPackagesPage() {
       </section>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">우선 오픈 패키지</h2>
+          <h2 className="text-3xl display text-slate-950">우선 오픈 패키지</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {packageProducts.map((product) => (
               <KazakhstanProductCard key={product.id} product={product} />

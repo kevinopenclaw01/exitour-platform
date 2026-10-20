@@ -36,8 +36,7 @@ export default function CharynCanyonDetailPage() {
       {jsonLd.map((item) => (
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item).replace(/</g, "\\u003c") }} />
       ))}
-      <KazakhstanHero
-        eyebrow="Premium Private Day Tour"
+      <KazakhstanHero
         title={product.title}
         description={product.summary}
         imagePath={product.imagePath}

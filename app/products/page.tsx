@@ -11,9 +11,8 @@ export default function ProductsPage() {
   return (
     <>
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <p className="text-sm font-bold text-cyan-700">Products</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+          <h1 className="mt-3 max-w-3xl text-4xl display text-slate-950 sm:text-5xl">
             공항 이동부터 현지 투어까지 필요한 것만 고르는 여행 상품
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">

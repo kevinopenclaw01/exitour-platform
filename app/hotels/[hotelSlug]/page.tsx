@@ -46,7 +46,6 @@ export default async function HotelDetailPage({ params }: HotelPageProps) {
   return (
     <>
       <PageHero
-        eyebrow="Hotel Deal"
         title={hotel.name}
         description={hotel.summary}
         meta={[

@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Destination } from "@/lib/data";
-import { ArrowUpRight } from "lucide-react";
+import { getAirportCode } from "@/lib/airportCodes";
 import TravelImage from "@/components/TravelImage";
 
 type DestinationCardProps = {
@@ -11,57 +10,63 @@ type DestinationCardProps = {
   variant?: "default" | "home";
 };
 
+// 수하물 태그 모양 목적지 카드. 공항 코드가 있는 곳은 코드를 크게, 없는 곳은 지명을 크게 쓴다.
 export default function DestinationCard({ destination, variant = "default" }: DestinationCardProps) {
   const href = destination.href ?? `/destinations/${destination.countrySlug}/${destination.citySlug}`;
+  const airport = getAirportCode(destination.id);
 
   if (variant === "home") {
     return (
-      <Link href={href} className="group block min-w-0">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-slate-100">
-          <TravelImage src={destination.imageUrl} alt={`${destination.name} 여행 이미지`} fill sizes="(min-width: 1024px) 33vw, 50vw" className="object-cover transition duration-500 group-hover:scale-105 motion-reduce:transform-none" fallbackTitle={destination.name} />
-        </div>
-        <div className="pt-3 sm:pt-4">
-          <p className="text-xs font-medium text-[#176753]">{destination.country}</p>
-          <div className="mt-1 flex items-center justify-between gap-2">
-            <h3 className="text-lg font-bold text-[#172b27] sm:text-xl">{destination.name}</h3>
-            <ArrowUpRight size={18} className="shrink-0 text-slate-400 transition group-hover:text-[#176753]" aria-hidden="true" />
-          </div>
-          <p className="mt-2 line-clamp-2 min-h-10 text-xs leading-5 text-slate-500 sm:text-sm sm:leading-6">{destination.summary}</p>
-          <p className="mt-2 truncate text-xs font-medium text-slate-600">{destination.bestFor.slice(0, 2).join(" · ")}</p>
-        </div>
+      <Link
+        href={href}
+        className="tag tag-hole group flex h-full min-w-0 flex-col px-5 pb-5 pt-12 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transform-none"
+      >
+        <p className="text-xs font-medium text-muted">{destination.country}</p>
+        {airport ? (
+          <p className="code mt-2 text-[4.25rem] text-ink transition-colors group-hover:text-cobalt" aria-hidden="true">
+            {airport.code}
+          </p>
+        ) : null}
+        <h3 className="display mt-2 text-2xl text-ink">{destination.name}</h3>
+        <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">{destination.summary}</p>
+        <dl className="tag-perf mt-auto grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 pt-4 text-xs">
+          <dt className="text-muted">비행</dt>
+          <dd className="font-medium text-ink">{destination.flightTime}</dd>
+          <dt className="text-muted">좋은 때</dt>
+          <dd className="font-medium text-ink">{destination.season}</dd>
+        </dl>
       </Link>
     );
   }
 
   return (
-    <Link
-      href={href}
-      className="group block overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-    >
-      <div className="aspect-[4/3] overflow-hidden bg-slate-200">
-        <Image
+    <Link href={href} className="tag group flex h-full flex-col overflow-hidden transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transform-none">
+      <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
+        <TravelImage
           src={destination.imageUrl}
           alt={`${destination.name} 여행 이미지`}
-          width={800}
-          height={600}
-          className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover"
+          fallbackTitle={destination.name}
         />
+        {airport ? (
+          <span className="code absolute bottom-3 left-3 rounded-md bg-white px-2.5 pb-1 pt-1.5 text-3xl text-ink" aria-hidden="true">
+            {airport.code}
+          </span>
+        ) : null}
       </div>
-      <div className="p-5">
-        <div className="flex items-center justify-between gap-3">
-          <p className="text-sm font-bold text-cyan-700">{destination.country}</p>
-          <p className="text-xs font-semibold text-slate-500">{destination.season}</p>
-        </div>
-        <h3 className="mt-2 text-xl font-black text-slate-950">{destination.name}</h3>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="text-xs font-medium text-muted">{destination.country}</p>
+        <h3 className="display mt-1 text-2xl text-ink group-hover:text-cobalt">{destination.name}</h3>
         <p className="mt-3 text-sm leading-6 text-slate-600">{destination.summary}</p>
-        <div className="mt-4 flex flex-wrap gap-2">
-          {destination.bestFor.map((tag) => (
-            <span key={tag} className="rounded-md bg-slate-100 px-2.5 py-1 text-xs font-semibold text-slate-700">
-              {tag}
-            </span>
-          ))}
-        </div>
-        <p className="mt-4 text-xs font-semibold text-slate-500">비행/이동: {destination.flightTime}</p>
+        <p className="mt-4 text-sm text-slate-700">{destination.bestFor.join(", ")}</p>
+        <dl className="tag-perf mt-auto grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 pt-4 text-xs">
+          <dt className="text-muted">비행</dt>
+          <dd className="font-medium text-ink">{destination.flightTime}</dd>
+          <dt className="text-muted">좋은 때</dt>
+          <dd className="font-medium text-ink">{destination.season}</dd>
+        </dl>
       </div>
     </Link>
   );

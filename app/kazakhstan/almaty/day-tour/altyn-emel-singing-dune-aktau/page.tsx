@@ -76,8 +76,7 @@ export default function AltynEmelPrivateTourPage() {
       {jsonLd.map((item) => (
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
-      <KazakhstanHero
-        eyebrow="Premium Private Nature Tour"
+      <KazakhstanHero
         title="알틴에멜 국립공원 프라이빗 투어"
         description="노래하는 사구와 악타우 산맥을 만나는 알마티 출발 대자연 코스"
         imagePath={product.imagePath}

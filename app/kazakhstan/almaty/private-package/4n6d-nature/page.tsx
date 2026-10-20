@@ -85,7 +85,6 @@ export default function KazakhstanNaturePackageDetailPage() {
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
       <KazakhstanHero
-        eyebrow="Kazakhstan Premium Package"
         title={product.title}
         description={product.summary}
         imagePath={product.imagePath}

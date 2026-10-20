@@ -32,7 +32,7 @@ export default function RentcarOptionTable({ options }: { options: RentcarPriceO
         </table>
       </div>
       <p className="border-t border-slate-100 bg-slate-50 px-4 py-3 text-xs font-semibold leading-5 text-slate-500">
-        위 금액은 mock 기준 표준 상품 템플릿용 예시입니다. 실제 운영 전 차량 가능 여부와 시즌 요금 확인이 필요합니다.
+        표시 요금은 기본 기준입니다. 실제 요금은 날짜, 차량 가능 여부, 시즌에 따라 상담 때 확정됩니다.
       </p>
     </div>
   );

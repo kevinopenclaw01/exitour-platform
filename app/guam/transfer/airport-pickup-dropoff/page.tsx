@@ -77,10 +77,7 @@ export default function GuamAirportPickupDropoffPage() {
       <section className="bg-white">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
           <div>
-            <p className="text-sm font-black text-cyan-700">
-              {guamTransferProduct.region} · {guamTransferProduct.productType}
-            </p>
-            <h1 className="mt-4 text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+            <h1 className="mt-4 text-4xl display text-slate-950 sm:text-5xl">
               {guamTransferProduct.title}
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">{guamTransferProduct.heroDescription}</p>
@@ -100,7 +97,7 @@ export default function GuamAirportPickupDropoffPage() {
               </span>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/quote" className="rounded-md bg-slate-950 px-5 py-3 text-center text-sm font-black text-white transition hover:bg-slate-800">
+              <Link href="/quote" className="rounded-md bg-signal px-5 py-3 text-center text-sm font-bold text-ink transition-colors hover:bg-signal-hover">
                 견적 요청하기
               </Link>
               <Link href={guamTransferProduct.guidePath} className="rounded-md border border-slate-300 px-5 py-3 text-center text-sm font-black text-slate-950 transition hover:bg-slate-100">
@@ -139,7 +136,7 @@ export default function GuamAirportPickupDropoffPage() {
 
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">왕복/편도 가격표</h2>
+          <h2 className="text-3xl display text-slate-950">왕복/편도 가격표</h2>
           <div className="mt-8">
             <GuamTransferPriceTable options={guamTransferPriceOptions} />
           </div>

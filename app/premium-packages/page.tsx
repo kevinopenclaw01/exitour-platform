@@ -57,9 +57,8 @@ export default function PremiumPackagesPage() {
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
       <section className="bg-white">
-        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <p className="text-sm font-black text-cyan-700">Premium Packages</p>
-          <h1 className="mt-4 max-w-4xl text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
+        <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
+          <h1 className="mt-4 max-w-4xl text-4xl display text-slate-950 sm:text-5xl">
             프리미엄 프라이빗 패키지 허브
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-8 text-slate-600">
@@ -79,7 +78,7 @@ export default function PremiumPackagesPage() {
       </section>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">국가 선택</h2>
+          <h2 className="text-3xl display text-slate-950">국가 선택</h2>
           <div className="mt-8">
             <PremiumCountryGrid countries={premiumPackageCountries} />
           </div>

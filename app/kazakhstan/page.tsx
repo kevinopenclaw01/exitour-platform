@@ -64,7 +64,6 @@ export default function KazakhstanPage() {
         <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
       ))}
       <KazakhstanHero
-        eyebrow="Kazakhstan Almaty"
         title="카자흐스탄 알마티 | 단독·조인 프리미엄 투어"
         description="설산, 호수, 캐년, 국립공원까지 — 알마티의 자연을 전용차량과 전담 가이드로 깊이 있게 경험하는 프리미엄 투어입니다. 내 일정에 맞춘 단독투어(자유 패키지·데이투어)와 소수 정예 조인투어 중 선택하실 수 있으며, 개인 일정과 취향에 따라 상담 후 맞춤 구성도 가능합니다."
         imagePath="/images/kazakhstan/kazakhstan-main-hero.png"
@@ -73,8 +72,7 @@ export default function KazakhstanPage() {
       <section className="bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-14 sm:px-6 lg:grid-cols-3 lg:px-8">
           {productTypes.map((type) => (
-            <Link key={type.id} href={type.path} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-300">
-              <p className="text-sm font-black text-cyan-700">Travel Style</p>
+            <Link key={type.id} href={type.path} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-300">
               <h2 className="mt-3 text-xl font-black text-slate-950">{type.label}</h2>
             </Link>
           ))}
@@ -90,7 +88,7 @@ export default function KazakhstanPage() {
       </section>
       <section className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">Main destinations</h2>
+          <h2 className="text-3xl display text-slate-950">알마티에서 가는 곳</h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {kazakhstanDestinations.map((destination) => (
               <InfoBlock key={destination.id} title={destination.title}>
@@ -102,7 +100,7 @@ export default function KazakhstanPage() {
       </section>
       <section className="bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tight text-slate-950">대표 상품</h2>
+          <h2 className="text-3xl display text-slate-950">대표 상품</h2>
           <div className="mt-8 grid gap-5 md:grid-cols-2">
             {featuredProducts.map((product) => (
               <KazakhstanProductCard key={product.id} product={product} />
