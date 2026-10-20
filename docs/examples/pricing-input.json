@@ -1,0 +1,39 @@
+{
+  "productId": "synthetic-test-only",
+  "revisionId": "synthetic-revision-1",
+  "travelers": 4,
+  "minTravelers": 4,
+  "costLines": [
+    {
+      "id": "synthetic-cost",
+      "title": "가상 계산 예시이며 실제 상품 원가 아님",
+      "currency": "USD",
+      "amountMinor": 10000,
+      "quantity": 1,
+      "unit": "per-person",
+      "verification": "unverified",
+      "sourceReference": "synthetic-example-not-supplier-contract"
+    }
+  ],
+  "rates": [
+    {
+      "id": "synthetic-fx-usd",
+      "source": "manual",
+      "baseCurrency": "USD",
+      "quoteCurrency": "KRW",
+      "rateMicros": 1400000000,
+      "rateKind": "cash-buy",
+      "observedAt": "2026-10-12T23:00:00Z",
+      "capturedAt": "2026-10-12T23:30:00Z",
+      "validUntil": "2026-10-14T00:00:00Z"
+    }
+  ],
+  "policy": {
+    "markupBps": 2000,
+    "fixedFeeKrw": 10000,
+    "roundingKrw": 1000,
+    "requiredRateKind": "cash-buy"
+  },
+  "calculatedAt": "2026-10-13T00:00:00Z",
+  "validUntil": "2026-10-14T00:00:00Z"
+}

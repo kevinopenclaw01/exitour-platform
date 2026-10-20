@@ -37,7 +37,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Supabase Database Setup
 
-Phase 3 adds Supabase/Postgres schema and seed files only. The current frontend still uses static data from `lib/data.ts`; quote form submission, admin pages, and OpenClaw integration are not connected yet.
+The repository includes Supabase/Postgres schema and seed files. Product pages still use static/mock data. Quote submission and an admin quote UI have since been added; their availability depends on the configured project's status and RLS permissions.
 
 ### 1. Create a Supabase project
 
@@ -81,6 +81,17 @@ The seed contains sample destinations, products, hotels, rooms, and 2026 Q2 samp
 ### Current integration status
 
 - Frontend pages are not reading from Supabase yet.
-- `/quote` does not submit to the database yet.
-- Admin pages are not implemented yet.
+- `/quote` submits through the existing server route; it is not changed by the pricing work.
+- Admin quote pages exist; access and database permissions must be checked before production use.
 - OpenClaw API is not implemented yet.
+
+## Internal Pricing Preview
+
+```powershell
+npm.cmd run test:pricing
+npm.cmd run pricing:preview
+```
+
+수동 환율과 원가 입력으로 계산안을 만드는 내부 기능입니다. 기본 예시는 가상 데이터이며 실제 상품 요금이 아닙니다. DB 저장, 관리자 승인 화면, 실시간 환율 수집 및 고객 가격 자동 변경은 아직 연결하지 않았습니다. 기존 홈페이지 가격과 견적 기능은 유지됩니다.
+
+구조, 단위, 승인 제한 및 Supabase 연결 준비 사항은 [요금 자동화 문서](docs/PRICING_AUTOMATION.md)를 참고하세요. 홈페이지 전용 Supabase 프로젝트는 조회 시 중지 상태였으므로, 기존 복구/신규 선택과 연결 검증이 필요합니다.

@@ -288,6 +288,7 @@ export const kazakhstanPreparationItems = [
 ];
 
 const commonIncludes = ["일정표상 숙박", "전용차량", "한국어 가이드", "기사", "일정표상 식사", "관광지 입장료", "데일리 생수", "일정표에 명시된 포함 내역"];
+const dayTourIncludes = commonIncludes.filter((item) => item !== "일정표상 숙박");
 const commonExcludes = [
   "국제선 항공권",
   "개인 경비",
@@ -399,7 +400,7 @@ export const kazakhstanProducts: KazakhstanProduct[] = [
     imagePath: "/images/kazakhstan/charyn-canyon.jpg",
     highlights: ["알마티 출발", "전용차량", "가이드 동행", "장거리 당일투어"],
     recommendedFor: ["짧은 일정의 자연 여행", "알마티 체류 중 대표 명소 방문", "현지 소통과 이동을 맡기고 싶은 고객"],
-    includes: commonIncludes,
+    includes: dayTourIncludes,
     excludes: commonExcludes,
     itinerary: ["알마티 호텔 출발", "차른 캐년 이동", "캐년 산책과 전망 포인트", "현지 식사 또는 휴식", "알마티 복귀"],
     notices: commonNotices,

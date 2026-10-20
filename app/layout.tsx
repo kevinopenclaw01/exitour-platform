@@ -15,8 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://exitour.co.kr"),
   title: "EXITour | 프리미엄 맞춤 여행 상담",
-  description: "한국인 여행자를 위한 프리미엄 목적지, 현지 상품, 계약 호텔, 맞춤 패키지 상담 MVP",
+  description: "휴양, 가족여행, 프리미엄 단독 자연여행을 위한 EXITour. 호텔, 차량, 현지 투어를 연결해 여행 조건에 맞는 일정을 상담합니다.",
 };
 
 export default function RootLayout({

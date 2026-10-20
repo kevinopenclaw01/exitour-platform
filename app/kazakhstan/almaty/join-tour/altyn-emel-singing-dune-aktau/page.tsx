@@ -39,7 +39,7 @@ const jsonLd = product
           priceCurrency: "KRW",
           priceSpecification: {
             "@type": "PriceSpecification",
-            description: "조인 투어 가격은 상담 후 안내됩니다. 1인 기준가와 최소 출발 인원은 추후 입력할 수 있습니다.",
+            description: "조인투어 요금과 출발 조건은 상담 시 안내됩니다.",
           },
           url: `${siteUrl}${product.canonicalPath}`,
         },
@@ -72,7 +72,7 @@ export default function AltynEmelJoinTourPage() {
   return (
     <>
       {jsonLd.map((item) => (
-        <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+        <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item).replace(/</g, "\\u003c") }} />
       ))}
       <KazakhstanHero
         eyebrow="Almaty Join Nature Tour"

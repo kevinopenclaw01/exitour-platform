@@ -21,3 +21,10 @@ body {
   background: #67e8f9;
   color: #0f172a;
 }
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #168468;
+  outline-offset: 4px;
+}

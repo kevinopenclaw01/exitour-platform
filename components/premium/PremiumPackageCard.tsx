@@ -1,13 +1,20 @@
 import Link from "next/link";
 import type { KazakhstanProduct } from "@/lib/mock/kazakhstanPremium";
 import { buildQuoteUrl } from "@/lib/quote/prefill";
-
-const formatKrw = (value: number) => new Intl.NumberFormat("ko-KR").format(value);
+import { getKazakhstanPriceDisplay } from "@/lib/kazakhstan/priceDisplay";
+import { kazakhstanPriceReviews } from "@/lib/kazakhstan/priceReviews";
 
 export default function PremiumPackageCard({ product }: { product: KazakhstanProduct }) {
   const isAvailable = product.status === "available";
   const href = isAvailable ? product.canonicalPath : buildQuoteUrl(product.quotePrefill ?? {});
-  const serviceLevelLabel = product.serviceLevel === "join" ? "Join Group" : "Premium Private";
+  const serviceLevelLabel = product.serviceLevel === "join"
+    ? "조인투어"
+    : product.productType === "private-package"
+      ? "프리미엄 단독 패키지"
+      : product.productType === "airport-transfer"
+        ? "공항 픽업·샌딩"
+        : "단독투어";
+  const price = getKazakhstanPriceDisplay(product.priceFromKrw, kazakhstanPriceReviews[product.id]);
 
   return (
     <Link
@@ -33,7 +40,7 @@ export default function PremiumPackageCard({ product }: { product: KazakhstanPro
       <div className="mt-5 flex items-end justify-between gap-3 border-t border-slate-100 pt-4">
         <p className="text-xs font-semibold text-slate-500">{product.duration}</p>
         <p className="text-right text-lg font-black text-slate-950">
-          {product.priceFromKrw > 0 ? `${formatKrw(product.priceFromKrw)}원~` : "상담 문의"}
+          {price.label}
         </p>
       </div>
     </Link>

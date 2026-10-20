@@ -25,7 +25,7 @@ export default function KazakhstanMealSection({ primaryPlanId }: KazakhstanMealS
   const secondaryPlan = kazakhstanMealPlans[primaryPlanId === "3n5d" ? "4n6d" : "3n5d"];
 
   return (
-    <section className="space-y-7 lg:col-span-2">
+    <section className="min-w-0 space-y-7 lg:col-span-2">
       <div className="max-w-3xl">
         <p className="text-sm font-black text-cyan-700">Almaty Meal Plan</p>
         <h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">알마티 식사, 일정에 맞게 더 알차게 준비했습니다</h2>

@@ -5,9 +5,11 @@ import KazakhstanGuideNotice from "@/components/kazakhstan/KazakhstanGuideNotice
 import KazakhstanHero from "@/components/kazakhstan/KazakhstanHero";
 import PremiumCTA from "@/components/premium/PremiumCTA";
 import { getKazakhstanProduct, kazakhstanKakaoMessage } from "@/lib/mock/kazakhstanPremium";
+import { normalizePriceKrw } from "@/lib/kazakhstan/priceDisplay";
 
 const product = getKazakhstanProduct("day-tour", "charyn-canyon");
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const offerPrice = normalizePriceKrw(product?.priceFromKrw);
 
 export function generateMetadata(): Metadata {
   if (!product) return { title: "상품을 찾을 수 없습니다 | EXITour" };
@@ -20,7 +22,7 @@ export function generateMetadata(): Metadata {
 
 const jsonLd = product
   ? [
-      { "@context": "https://schema.org", "@type": "Service", name: product.title, description: product.summary, areaServed: "Kazakhstan", offers: { "@type": "Offer", priceCurrency: "KRW", price: product.priceFromKrw, url: `${siteUrl}${product.canonicalPath}` } },
+      { "@context": "https://schema.org", "@type": "Service", name: product.title, description: product.summary, areaServed: "Kazakhstan", offers: { "@type": "Offer", priceCurrency: "KRW", ...(offerPrice !== null ? { price: offerPrice } : {}), url: `${siteUrl}${product.canonicalPath}` } },
       { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: product.faqs.map((faq) => ({ "@type": "Question", name: faq.question, acceptedAnswer: { "@type": "Answer", text: faq.answer } })) },
       { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "홈", item: siteUrl }, { "@type": "ListItem", position: 2, name: "카자흐스탄", item: `${siteUrl}/kazakhstan` }, { "@type": "ListItem", position: 3, name: "알마티", item: `${siteUrl}/kazakhstan/almaty` }, { "@type": "ListItem", position: 4, name: product.shortTitle, item: `${siteUrl}${product.canonicalPath}` }] },
     ]
@@ -32,7 +34,7 @@ export default function CharynCanyonDetailPage() {
   return (
     <>
       {jsonLd.map((item) => (
-        <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }} />
+        <script key={item["@type"]} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(item).replace(/</g, "\\u003c") }} />
       ))}
       <KazakhstanHero
         eyebrow="Premium Private Day Tour"

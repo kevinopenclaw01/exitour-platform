@@ -5,6 +5,7 @@ import { danangRentcarProductCard } from "@/lib/mock/danangRentcar";
 import { danangTransferProductCard } from "@/lib/mock/danangTransfer";
 import { guamTransferProductCard } from "@/lib/mock/guamTransfer";
 import { availableKazakhstanProductCards } from "@/lib/mock/kazakhstanPremium";
+import { sapaProductCard } from "@/lib/mock/sapaPackage";
 
 export default function ProductsPage() {
   return (
@@ -22,6 +23,7 @@ export default function ProductsPage() {
       </section>
       <section className="bg-slate-50">
         <div className="mx-auto grid max-w-7xl gap-5 px-5 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+          <ProductCard product={sapaProductCard} />
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

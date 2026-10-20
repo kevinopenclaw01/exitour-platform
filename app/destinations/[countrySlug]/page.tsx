@@ -20,6 +20,7 @@ import {
 } from "@/lib/data";
 import { guamTransferProductCard } from "@/lib/mock/guamTransfer";
 import { availableKazakhstanProductCards } from "@/lib/mock/kazakhstanPremium";
+import { sapaProductCard } from "@/lib/mock/sapaPackage";
 
 type CountryPageProps = {
   params: Promise<{ countrySlug: string }>;
@@ -62,6 +63,8 @@ export default async function CountryDetailPage({ params }: CountryPageProps) {
       ? [guamTransferProductCard, ...countryProducts]
       : country.slug === "kazakhstan"
         ? [...availableKazakhstanProductCards, ...countryProducts]
+        : country.slug === "vietnam"
+          ? [sapaProductCard, ...countryProducts]
         : countryProducts;
   const countryHotels = getHotelsForCountry(country.slug);
 

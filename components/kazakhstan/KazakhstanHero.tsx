@@ -1,5 +1,5 @@
 import { existsSync } from "fs";
-import Image from "next/image";
+import TravelImage from "@/components/TravelImage";
 import { join } from "path";
 
 const publicFileExists = (imagePath: string) => existsSync(join(process.cwd(), "public", imagePath.replace(/^\//, "")));
@@ -38,7 +38,16 @@ export default function KazakhstanHero({
         </div>
         <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-lg bg-slate-200 shadow-sm">
           {hasImage ? (
-            <Image src={imagePath} alt={title} fill className="object-cover" sizes="(min-width: 1024px) 45vw, 100vw" />
+            <TravelImage
+              src={imagePath}
+              alt={title}
+              fill
+              preload
+              className="object-cover"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+              fallbackTitle="카자흐스탄 프리미엄 자연 여행"
+              fallbackDescription="산, 캐년, 호수, 사막을 연결하는 전용차량 프라이빗 투어"
+            />
           ) : (
             <div className="px-6 text-center">
               <p className="text-lg font-black text-slate-800">카자흐스탄 프리미엄 자연 여행</p>
