@@ -49,6 +49,6 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - The only working copy is `C:\Users\kevin\Desktop\바탕화면\AI\semi ochestra\웹사이트\EXITour 홈페이지\site`. The old copy under `.openclaw\workspace-codex\exitour-platform` is retired.
 - Codex and Claude Code share this folder. Before editing, check `..\작업중.md`; commit after each change so the other agent continues from git history.
-- Visual rules live in `DESIGN.md` (this folder). Use the tokens in `app/globals.css` (`ink`, `cobalt`, `signal`, `paper`, `line`, `muted`, classes `display`, `code`, `num`, `tag`, `tag-hole`, `tag-perf`). Do not add new hex colors in components.
+- Visual rules live in `DESIGN.md` (this folder). Use the tokens in `app/globals.css` (`ink`, `navy`, `signal`, `paper`, `line`, `muted`, classes `display`, `code`, `num`, `tag`, `tag-hole`, `tag-perf`). Do not add new hex colors in components. The owner rejected the cobalt blue fields (2026-10-20); keep backgrounds white/light.
 - No eyebrow/kicker labels above headings, no English section labels, no internal notes (mock, CTA, TODO, 템플릿) in customer-facing copy.
 - The primary action is a yellow `bg-signal text-ink` button. Use it once per section.
