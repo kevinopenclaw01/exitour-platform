@@ -4,10 +4,10 @@
 .git
 .next
 node_modules
-supabase
-docs
-scripts
+/supabase
+/docs
+/scripts
 __pycache__
 *.py
-project-files.txt
-DESIGN.md
+/project-files.txt
+/DESIGN.md
