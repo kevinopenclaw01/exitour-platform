@@ -1,0 +1,13 @@
+# 배포에 올리지 않는 것: 비밀값, DB 원본, 원가·내부 문서, 개발 도구
+.env*
+!.env.example
+.git
+.next
+node_modules
+supabase
+docs
+scripts
+__pycache__
+*.py
+project-files.txt
+DESIGN.md
