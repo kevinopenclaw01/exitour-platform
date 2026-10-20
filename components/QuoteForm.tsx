@@ -142,7 +142,6 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
           </div>
           <input name="prefill_product_id" type="hidden" value={prefill?.productId ?? ""} readOnly />
           <input name="prefill_source_path" type="hidden" value={prefill?.sourcePath ?? ""} readOnly />
-          {prefill?.sourcePath ? <p className="mt-3 text-xs font-semibold text-cyan-900">유입 페이지: {prefill.sourcePath}</p> : null}
         </section>
       ) : null}
 
