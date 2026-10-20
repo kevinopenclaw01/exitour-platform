@@ -1,15 +1,15 @@
 ---
-name: EXITour baggage-tag system
+name: EXITour baggage-tag system (white)
 updated: 2026-10-20
 colors:
-  paper: "#F3F5FA"      # 바탕
-  ink: "#0F1838"        # 글자, 남색 띠
-  cobalt: "#2340D8"     # 브랜드 면(첫 화면·상담 띠)
-  cobalt-deep: "#1A2FA6"
+  paper: "#F6F7F9"      # 옅은 회색 구역
+  ink: "#131A30"        # 글자, 남색 띠(카자흐스탄 소개·바닥글)
+  navy: "#1F2B5C"       # 강조 글자·선택 칩·링크 (2판: 코발트 파랑 폐기)
+  navy-deep: "#141D44"
   signal: "#FFD23F"     # 주된 행동 버튼만
   signal-hover: "#FFC410"
-  line: "#D6DCEA"       # 선·테두리
-  muted: "#46527A"      # 보조 글자
+  line: "#E1E4EA"       # 선·테두리
+  muted: "#545C70"      # 보조 글자
 typography:
   display: "Black Han Sans 400 — h1·h2 (class .display)"
   body: "Noto Sans KR variable — 본문·작은 제목"
@@ -26,8 +26,9 @@ shadow:
 여행 가방의 **수하물 태그**. 행선지는 공항 코드(DAD·TAG·MPH·GUM·CXR·ALA·HAN…)로 크게 박고, 카드는 끈 구멍과 절취선이 있는 태그로 만든다.
 
 ## 색
-- 바탕은 `paper`, 흰 태그가 그 위에 뜬다.
-- `cobalt`는 포인트가 아니라 **면**이다: 홈 첫 화면, 페이지 끝 상담 띠, 상담 상자.
+- 2026-10-20 2판: 사장님이 코발트 파란 면을 싫어해 **흰 바탕**으로 바꿨다. 파란색을 다시 넣지 않는다.
+- 첫 화면·상담 띠·상담 상자는 흰색 또는 `paper`(아주 옅은 회색). 태그 카드는 흰색 + 얇은 테두리 그림자.
+- `navy`는 작은 강조(링크, 선택한 칩, 번호, 아이콘)에만.
 - `ink`는 글자와 남색 띠(카자흐스탄 소개, 바닥글, 카자흐스탄 상품 머리).
 - `signal` 노랑은 **주된 행동 버튼에만**(견적 요청, 일정 보기). 한 구역에 하나.
 - 예전 페이지 호환: Tailwind의 `slate-*`는 남색 중립색, `cyan-*`는 코발트 눈금으로 바꿔 두었다(`app/globals.css`). 새 코드는 위 이름을 쓴다. 컴포넌트에 hex를 새로 쓰지 않는다.
