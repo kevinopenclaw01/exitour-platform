@@ -23,7 +23,7 @@ export default function DestinationCard({ destination, variant = "default" }: De
       >
         <p className="text-xs font-medium text-muted">{destination.country}</p>
         {airport ? (
-          <p className="code mt-2 text-[4.25rem] text-ink transition-colors group-hover:text-cobalt" aria-hidden="true">
+          <p className="code mt-2 text-[4.25rem] text-ink transition-colors group-hover:text-navy" aria-hidden="true">
             {airport.code}
           </p>
         ) : null}
@@ -58,7 +58,7 @@ export default function DestinationCard({ destination, variant = "default" }: De
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-medium text-muted">{destination.country}</p>
-        <h3 className="display mt-1 text-2xl text-ink group-hover:text-cobalt">{destination.name}</h3>
+        <h3 className="display mt-1 text-2xl text-ink group-hover:text-navy">{destination.name}</h3>
         <p className="mt-3 text-sm leading-6 text-slate-600">{destination.summary}</p>
         <p className="mt-4 text-sm text-slate-700">{destination.bestFor.join(", ")}</p>
         <dl className="tag-perf mt-auto grid grid-cols-[auto_1fr] gap-x-3 gap-y-1.5 pt-4 text-xs">

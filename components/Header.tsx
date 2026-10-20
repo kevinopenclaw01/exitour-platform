@@ -27,7 +27,7 @@ export default function Header() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-baseline gap-2.5" aria-label="EXITour 홈">
-          <span className="code text-[2rem] text-cobalt">EXITour</span>
+          <span className="code text-[2rem] text-navy">EXITour</span>
           <span className="hidden text-xs font-medium text-muted sm:inline">여행의 시작, 엑시투어</span>
         </Link>
 
@@ -41,7 +41,7 @@ export default function Header() {
                 aria-current={active ? "page" : undefined}
                 className={
                   "rounded-md px-3 py-2 text-[0.95rem] font-medium transition-colors " +
-                  (active ? "bg-cyan-50 text-cobalt" : "text-slate-700 hover:bg-slate-100 hover:text-ink")
+                  (active ? "bg-cyan-50 text-navy" : "text-slate-700 hover:bg-slate-100 hover:text-ink")
                 }
               >
                 {item.label}
@@ -86,7 +86,7 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={active ? "page" : undefined}
-                    className={"flex min-h-12 items-center text-base " + (active ? "font-bold text-cobalt" : "font-medium text-ink")}
+                    className={"flex min-h-12 items-center text-base " + (active ? "font-bold text-navy" : "font-medium text-ink")}
                   >
                     {item.label}
                   </Link>

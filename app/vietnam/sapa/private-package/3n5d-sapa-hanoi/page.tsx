@@ -66,24 +66,24 @@ export default function SapaPrivatePackagePage() {
             { icon: CarFront, label: "이동·안내", value: "전용차량·한국어 현지 가이드" },
             { icon: Mountain, label: "주요 코스", value: "판시팡·깟깟마을·하노이" },
             { icon: Utensils, label: "예약 방식", value: "항공·호텔 별도 선택" },
-          ].map(({ icon: Icon, label, value }) => <div key={label} className="min-w-0"><dt className="flex items-center gap-2 text-xs text-slate-500"><Icon size={17} className="shrink-0 text-cobalt" aria-hidden="true" />{label}</dt><dd className="mt-2 break-keep text-sm font-semibold leading-6 text-ink">{value}</dd></div>)}
+          ].map(({ icon: Icon, label, value }) => <div key={label} className="min-w-0"><dt className="flex items-center gap-2 text-xs text-slate-500"><Icon size={17} className="shrink-0 text-navy" aria-hidden="true" />{label}</dt><dd className="mt-2 break-keep text-sm font-semibold leading-6 text-ink">{value}</dd></div>)}
         </dl>
       </section>
 
       <section className="bg-white">
         <div className={`${container} grid gap-8 py-12 lg:grid-cols-[1fr_320px] lg:gap-12 lg:py-16`}>
           <div>
-            <p className="text-xs font-semibold text-cobalt">우리 일행의 속도로 떠나는 사파</p>
+            <p className="text-xs font-semibold text-navy">우리 일행의 속도로 떠나는 사파</p>
             <h2 className={`${sectionTitle} mt-3`}>함께하는 사람에 맞춰,<br />산과 마을 사이를 천천히</h2>
             <p className="mt-5 text-sm leading-7 text-slate-600">다른 팀과 일정을 맞추지 않아도 되는 단독여행입니다. 산악 풍경을 보는 시간, 마을을 걷는 시간, 이동 중 쉬어가는 시간을 가이드와 함께 조율합니다. 기본 코스를 바꾸고 싶다면 예약 전에 알려주세요.</p>
-            <ul className="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">{product.highlights.map((text) => <li key={text} className="flex gap-2"><Check size={18} className="shrink-0 text-cobalt" aria-hidden="true" />{text}</li>)}</ul>
+            <ul className="mt-6 grid gap-3 text-sm font-medium text-slate-700 sm:grid-cols-2">{product.highlights.map((text) => <li key={text} className="flex gap-2"><Check size={18} className="shrink-0 text-navy" aria-hidden="true" />{text}</li>)}</ul>
           </div>
           <aside className="self-start rounded-md border border-cyan-200 bg-cyan-50 p-6" aria-label="기본요금 안내">
-            <p className="text-sm font-semibold text-cobalt">성인 4인 출발 기준 · 성인 1인</p>
+            <p className="text-sm font-semibold text-navy">성인 4인 출발 기준 · 성인 1인</p>
             <p className="mt-3 text-3xl font-bold text-ink">690,000<span className="ml-1 text-base">원부터</span></p>
             <p className="mt-2 text-sm text-slate-600">4인 기본 합계 2,760,000원</p>
             <p className="mt-4 text-sm leading-6 text-slate-600">{product.price.note}</p>
-            <Link href={sapaQuoteUrl} className="mt-5 flex min-h-12 items-center justify-center gap-2 rounded-md bg-cobalt px-4 py-3 text-sm font-bold text-white hover:bg-[#0c4536]">여행일별 견적 요청<ArrowRight size={16} aria-hidden="true" /></Link>
+            <Link href={sapaQuoteUrl} className="mt-5 flex min-h-12 items-center justify-center gap-2 rounded-md bg-navy px-4 py-3 text-sm font-bold text-white hover:bg-[#0c4536]">여행일별 견적 요청<ArrowRight size={16} aria-hidden="true" /></Link>
           </aside>
         </div>
       </section>
@@ -105,7 +105,7 @@ export default function SapaPrivatePackagePage() {
 
       <section id="itinerary" className="scroll-mt-24 bg-white">
         <div className={`${container} max-w-4xl py-12 lg:py-16`}>
-          <p className="text-xs font-semibold text-cobalt">하노이 입국 · 사파 호텔 3박 · 심야 귀국편</p>
+          <p className="text-xs font-semibold text-navy">하노이 입국 · 사파 호텔 3박 · 심야 귀국편</p>
           <h2 className={`${sectionTitle} mt-3`}>3박 5일, 이렇게 여행합니다</h2>
           <p className="mb-7 mt-4 text-sm leading-7 text-slate-600">낮 도착·심야 출발 항공편 기준 예시 일정입니다. 호텔은 Day 1~3 총 3박이며 마지막 밤은 기내박입니다. 항공 시간, 날씨, 교통과 시설 운영에 따라 방문 순서·체류 시간은 조정될 수 있습니다.</p>
           <SapaItinerary days={sapaDays} />
@@ -116,7 +116,7 @@ export default function SapaPrivatePackagePage() {
         <div className={`${container} py-12 lg:py-16`}>
           <h2 className={sectionTitle}>포함 범위를 먼저 확인해주세요</h2>
           <div className="mt-7 grid gap-8 md:grid-cols-2">
-            <div><h3 className="mb-4 text-lg font-bold text-cobalt">포함사항</h3><BulletList items={[...product.includes]} /></div>
+            <div><h3 className="mb-4 text-lg font-bold text-navy">포함사항</h3><BulletList items={[...product.includes]} /></div>
             <div><h3 className="mb-4 text-lg font-bold text-slate-800">불포함사항</h3><BulletList items={[...product.excludes]} /></div>
           </div>
           <div className="mt-8 grid gap-7 border-t border-slate-200 pt-7 md:grid-cols-2">
@@ -138,7 +138,7 @@ export default function SapaPrivatePackagePage() {
         <div className={`${container} py-12 lg:py-16`}><h2 className={`${sectionTitle} mb-7`}>출발 전에 궁금한 점</h2><FAQList faqs={sapaFaqs} /></div>
       </section>
 
-      <section className="bg-cobalt text-white">
+      <section className="bg-navy text-white">
         <div className={`${container} py-12 lg:py-16`}>
           <p className="text-sm font-semibold text-cyan-200">EXITour 사파 여행 상담</p>
           <h2 className="mt-3 break-keep text-2xl font-bold leading-snug sm:text-3xl">여행일과 일행을 알려주세요</h2>

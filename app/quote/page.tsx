@@ -29,7 +29,7 @@ export default async function QuotePage({ searchParams }: QuotePageProps) {
           </div>
           <div className="text-sm text-slate-700 md:text-right">
             <p>글보다 말이 편하시면</p>
-            <a href="tel:01059342629" className="num text-2xl font-semibold text-cobalt hover:underline">
+            <a href="tel:01059342629" className="num text-2xl font-semibold text-navy hover:underline">
               010-5934-2629
             </a>
             <p className="mt-1">카카오톡 ID exitouroffice</p>

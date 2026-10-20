@@ -9,11 +9,11 @@ export default function CTASection({ variant = "default" }: { variant?: "default
       : "가족 구성, 여행 속도, 예산, 꼭 하고 싶은 경험을 알려주시면 목적지별 호텔과 현지 서비스를 묶어 견적으로 정리해 드립니다.";
 
   return (
-    <section className="on-cobalt bg-cobalt text-white">
+    <section className="border-t border-line bg-paper text-ink">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1.4fr_1fr] lg:items-center lg:px-8 lg:py-16">
         <div>
           <h2 className="display max-w-2xl text-3xl sm:text-[2.6rem]">{title}</h2>
-          <p className="mt-4 max-w-xl text-base leading-7 text-cyan-100">{body}</p>
+          <p className="mt-4 max-w-xl text-base leading-7 text-slate-700">{body}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center lg:flex-col lg:items-stretch">
           <Link
@@ -24,11 +24,11 @@ export default function CTASection({ variant = "default" }: { variant?: "default
           </Link>
           <a
             href="tel:01059342629"
-            className="inline-flex min-h-13 items-center justify-center rounded-md border-2 border-white/40 px-6 py-3 text-base font-semibold text-white transition-colors hover:border-white"
+            className="inline-flex min-h-13 items-center justify-center rounded-md border-2 border-slate-300 bg-white px-6 py-3 text-base font-semibold text-ink transition-colors hover:border-ink"
           >
             전화 상담 <span className="num ml-2">010-5934-2629</span>
           </a>
-          <p className="text-sm text-cyan-100 sm:ml-2 lg:ml-0 lg:text-center">카카오톡 ID exitouroffice</p>
+          <p className="text-sm text-muted sm:ml-2 lg:ml-0 lg:text-center">카카오톡 ID exitouroffice</p>
         </div>
       </div>
     </section>

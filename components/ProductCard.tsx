@@ -24,12 +24,12 @@ export default function ProductCard({ product, href, variant = "default" }: { pr
         href={target}
         className="group grid grid-cols-[1fr_auto] items-center gap-x-4 gap-y-2 py-5 sm:grid-cols-[10rem_1fr_9rem_8rem_1.5rem] sm:gap-x-6"
       >
-        <span className="col-span-2 inline-flex items-center gap-2 text-sm font-medium text-cobalt sm:col-span-1">
+        <span className="col-span-2 inline-flex items-center gap-2 text-sm font-medium text-navy sm:col-span-1">
           <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
           {label}
         </span>
         <span className="min-w-0">
-          <span className="block text-lg font-bold leading-snug text-ink group-hover:text-cobalt">{product.title}</span>
+          <span className="block text-lg font-bold leading-snug text-ink group-hover:text-navy">{product.title}</span>
           <span className="mt-1 block text-sm text-muted">{product.destinationScope}</span>
         </span>
         <span className="hidden text-sm text-slate-700 sm:block">{product.duration}</span>
@@ -43,24 +43,24 @@ export default function ProductCard({ product, href, variant = "default" }: { pr
             <span className="text-sm font-semibold text-ink">상담 후 안내</span>
           )}
         </span>
-        <ArrowRight size={18} className="hidden text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-cobalt sm:block" aria-hidden="true" />
+        <ArrowRight size={18} className="hidden text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-navy sm:block" aria-hidden="true" />
       </Link>
     );
   }
 
   return (
     <Link href={target} className="tag group flex h-full flex-col p-5 transition-transform duration-300 ease-out hover:-translate-y-1 motion-reduce:transform-none">
-      <span className="inline-flex items-center gap-2 text-sm font-medium text-cobalt">
+      <span className="inline-flex items-center gap-2 text-sm font-medium text-navy">
         <Icon size={18} strokeWidth={1.75} aria-hidden="true" />
         {label}
         <span className="text-muted">· {product.destinationScope}</span>
       </span>
-      <h3 className="mt-3 text-xl font-bold leading-snug text-ink group-hover:text-cobalt">{product.title}</h3>
+      <h3 className="mt-3 text-xl font-bold leading-snug text-ink group-hover:text-navy">{product.title}</h3>
       <p className="mt-3 flex-1 text-sm leading-6 text-slate-600">{product.summary}</p>
       <ul className="mt-4 space-y-1.5 text-sm text-slate-700">
         {product.highlights.map((highlight) => (
           <li key={highlight} className="flex gap-2">
-            <span className="mt-[0.6rem] h-1 w-2.5 shrink-0 rounded-full bg-cobalt" aria-hidden="true" />
+            <span className="mt-[0.6rem] h-1 w-2.5 shrink-0 rounded-full bg-navy" aria-hidden="true" />
             <span>{highlight}</span>
           </li>
         ))}

@@ -24,9 +24,9 @@ export default function HotelCard({ hotel, variant = "default" }: { hotel: Hotel
             <MapPin size={14} aria-hidden="true" />
             {hotel.destination}
           </p>
-          <span className="rounded-full bg-cyan-50 px-2.5 py-0.5 text-xs font-semibold text-cobalt">{hotel.grade}</span>
+          <span className="rounded-full bg-cyan-50 px-2.5 py-0.5 text-xs font-semibold text-navy">{hotel.grade}</span>
         </div>
-        <h3 className="mt-2 text-lg font-bold leading-snug text-ink group-hover:text-cobalt">{hotel.name}</h3>
+        <h3 className="mt-2 text-lg font-bold leading-snug text-ink group-hover:text-navy">{hotel.name}</h3>
         <p className={"mt-2 text-sm leading-6 text-slate-600 " + (variant === "home" ? "line-clamp-2" : "")}>{hotel.summary}</p>
         {variant === "default" ? (
           <p className="mt-3 text-sm text-slate-700">{hotel.perks.join(", ")}</p>

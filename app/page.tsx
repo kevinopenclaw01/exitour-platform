@@ -34,7 +34,7 @@ function SectionHead({ title, description, href, label }: { title: string; descr
         <h2 className="display text-3xl text-ink sm:text-4xl">{title}</h2>
         <p className="mt-3 text-base leading-7 text-muted">{description}</p>
       </div>
-      <Link href={href} className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-cobalt hover:underline">
+      <Link href={href} className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-navy hover:underline">
         {label}
         <ArrowRight size={16} aria-hidden="true" />
       </Link>
@@ -45,8 +45,8 @@ function SectionHead({ title, description, href, label }: { title: string; descr
 export default function Home() {
   return (
     <>
-      {/* 첫 화면: 코발트 면 + 수하물 태그 상담 시작 폼 */}
-      <section className="on-cobalt relative overflow-hidden bg-cobalt text-white">
+      {/* 첫 화면: 흰 여백 + 수하물 태그 상담 시작 폼 */}
+      <section className="border-b border-line bg-white text-ink">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-14 pt-10 sm:px-6 sm:pt-14 lg:grid-cols-[1fr_minmax(0,34rem)] lg:gap-16 lg:px-8 lg:pb-20 lg:pt-16">
           <div>
             <h1 className="display text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-[4.25rem]">
@@ -54,13 +54,13 @@ export default function Home() {
               <br />
               짜는 여행
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-cyan-100">
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-700">
               항공권은 직접 사셔도 됩니다. 호텔, 전용차량, 현지 투어를 행선지에 맞춰 묶고, 단독 일정으로 견적을 드립니다.
             </p>
-            <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white">
-              <li>전용차량 · 가이드 동행</li>
-              <li>가족여행 맞춤 일정</li>
-              <li>설산 · 호수 장거리 자연여행</li>
+            <ul className="mt-8 flex flex-wrap gap-2 text-sm text-ink">
+              <li className="rounded-full border-2 border-line px-3.5 py-1">전용차량 · 가이드 동행</li>
+              <li className="rounded-full border-2 border-line px-3.5 py-1">가족여행 맞춤 일정</li>
+              <li className="rounded-full border-2 border-line px-3.5 py-1">설산 · 호수 장거리 자연여행</li>
             </ul>
           </div>
           <TripStarter />
@@ -145,7 +145,7 @@ export default function Home() {
           <ol className="mt-10 grid gap-8 md:grid-cols-3 md:gap-6">
             {consultSteps.map((step, index) => (
               <li key={step.title} className="border-t-2 border-ink pt-5">
-                <span className="code text-5xl text-cobalt" aria-hidden="true">{index + 1}</span>
+                <span className="code text-5xl text-navy" aria-hidden="true">{index + 1}</span>
                 <h3 className="mt-3 text-xl font-bold text-ink">{step.title}</h3>
                 <p className="mt-2 max-w-sm text-[0.95rem] leading-7 text-slate-700">{step.body}</p>
               </li>

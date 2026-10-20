@@ -17,7 +17,7 @@ type FormStatus = {
 };
 
 const fieldClass =
-  "min-h-12 rounded-md border-2 border-line bg-white px-3 py-2.5 text-base text-ink outline-none transition-colors placeholder:text-slate-500 hover:border-slate-400 focus:border-cobalt";
+  "min-h-12 rounded-md border-2 border-line bg-white px-3 py-2.5 text-base text-ink outline-none transition-colors placeholder:text-slate-500 hover:border-slate-400 focus:border-navy";
 
 const parseBudget = (value: FormDataEntryValue | null) => {
   if (typeof value !== "string") {
@@ -220,21 +220,21 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
           {serviceOptions.map((service) => (
             <label
               key={service}
-              className="flex min-h-12 cursor-pointer items-center gap-2.5 rounded-md border-2 border-line px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:border-slate-400 has-[:checked]:border-cobalt has-[:checked]:bg-cyan-50"
+              className="flex min-h-12 cursor-pointer items-center gap-2.5 rounded-md border-2 border-line px-3 py-2.5 text-sm font-medium text-ink transition-colors hover:border-slate-400 has-[:checked]:border-navy has-[:checked]:bg-cyan-50"
             >
               <input
                 name="requested_services"
                 value={service}
                 type="checkbox"
                 defaultChecked={serviceValue === service}
-                className="h-4 w-4 accent-cobalt"
+                className="h-4 w-4 accent-navy"
               />
               {service}
             </label>
           ))}
           {serviceValue && !serviceOptions.includes(serviceValue) ? (
             <label className="flex items-center gap-2 rounded-md border border-cyan-200 bg-cyan-50 px-3 py-3 text-sm font-semibold text-slate-700">
-              <input name="requested_services" value={serviceValue} type="checkbox" defaultChecked className="h-4 w-4 accent-cobalt" />
+              <input name="requested_services" value={serviceValue} type="checkbox" defaultChecked className="h-4 w-4 accent-navy" />
               {serviceValue}
             </label>
           ) : null}
@@ -252,7 +252,7 @@ export default function QuoteForm({ destinations, hotelGrades, serviceOptions, p
       </label>
 
       <label className="mt-6 flex cursor-pointer items-start gap-3 rounded-md bg-paper p-4 text-sm font-medium leading-6 text-ink">
-        <input name="privacy_agreed" type="checkbox" required className="mt-1 h-4 w-4 accent-cobalt" />
+        <input name="privacy_agreed" type="checkbox" required className="mt-1 h-4 w-4 accent-navy" />
         개인정보 수집 및 상담 목적 이용에 동의합니다.
       </label>
 

@@ -2,44 +2,45 @@
 
 /*
   EXITour 디자인 토큰 (2026-10 수하물 태그 리디자인)
+  - 2026-10-20 2판: 사장님 지시로 코발트 파란 면을 걷고 흰 바탕 + 남색 글자 + 노란 버튼으로.
   - slate·cyan 눈금을 브랜드 색으로 바꿔 둔다. 기존 페이지의 text-slate-600, text-cyan-700 같은
-    클래스가 그대로 브랜드 색으로 그려진다. 새 코드는 아래 이름(ink, cobalt, signal…)을 쓴다.
-  - 설명서: 웹사이트\EXITour 홈페이지\DESIGN.md
+    클래스가 그대로 브랜드 색으로 그려진다. 새 코드는 아래 이름(ink, navy, signal…)을 쓴다.
+  - 설명서: 웹사이트\EXITour 홈페이지\site\DESIGN.md
 */
 @theme {
-  --color-paper: #f3f5fa;
-  --color-ink: #0f1838;
-  --color-cobalt: #2340d8;
-  --color-cobalt-deep: #1a2fa6;
+  --color-paper: #f6f7f9;
+  --color-ink: #131a30;
+  --color-navy: #1f2b5c;
+  --color-navy-deep: #141d44;
   --color-signal: #ffd23f;
   --color-signal-hover: #ffc410;
-  --color-line: #d6dcea;
-  --color-muted: #46527a;
+  --color-line: #e1e4ea;
+  --color-muted: #545c70;
 
-  /* 남색 기운 중립색 (기존 slate 대체) */
-  --color-slate-50: #f3f5fa;
-  --color-slate-100: #e7ebf4;
-  --color-slate-200: #d6dcea;
-  --color-slate-300: #bcc5da;
-  --color-slate-400: #8f9ab8;
-  --color-slate-500: #5b6789;
-  --color-slate-600: #46527a;
-  --color-slate-700: #343f66;
-  --color-slate-800: #232d52;
-  --color-slate-900: #172046;
-  --color-slate-950: #0f1838;
+  /* 중립색 (기존 slate 대체, 남색 기운은 아주 약하게) */
+  --color-slate-50: #f6f7f9;
+  --color-slate-100: #eef0f3;
+  --color-slate-200: #e1e4ea;
+  --color-slate-300: #c8cdd6;
+  --color-slate-400: #959cab;
+  --color-slate-500: #636b7d;
+  --color-slate-600: #4b5367;
+  --color-slate-700: #3a4256;
+  --color-slate-800: #262d3f;
+  --color-slate-900: #1a2032;
+  --color-slate-950: #131a30;
 
-  /* 코발트 (기존 cyan 대체) */
-  --color-cyan-50: #eef1fe;
-  --color-cyan-100: #dde3fd;
-  --color-cyan-200: #bcc8fb;
-  --color-cyan-300: #93a6f8;
-  --color-cyan-400: #6681f2;
-  --color-cyan-500: #3f5ce6;
-  --color-cyan-600: #2340d8;
-  --color-cyan-700: #2340d8;
-  --color-cyan-800: #1a2fa6;
-  --color-cyan-900: #14247d;
+  /* 남색 강조 (기존 cyan 대체 — 파란색 아님) */
+  --color-cyan-50: #f1f2f6;
+  --color-cyan-100: #e4e7ee;
+  --color-cyan-200: #cdd2dd;
+  --color-cyan-300: #a9b0c2;
+  --color-cyan-400: #7c859e;
+  --color-cyan-500: #4e5878;
+  --color-cyan-600: #1f2b5c;
+  --color-cyan-700: #1f2b5c;
+  --color-cyan-800: #141d44;
+  --color-cyan-900: #131a30;
 
   --font-sans: var(--font-body), "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-display: var(--font-headline), var(--font-body), "Malgun Gothic", sans-serif;
@@ -48,9 +49,9 @@
   --font-weight-black: 800;
   --tracking-tight: -0.01em;
 
-  --shadow-sm: 0 1px 2px rgb(15 24 56 / 0.06);
-  --shadow-md: 0 6px 16px -6px rgb(15 24 56 / 0.18);
-  --shadow-tag: 0 2px 0 rgb(15 24 56 / 0.08), 0 14px 28px -14px rgb(15 24 56 / 0.35);
+  --shadow-sm: 0 1px 2px rgb(19 26 48 / 0.05);
+  --shadow-md: 0 6px 16px -6px rgb(19 26 48 / 0.16);
+  --shadow-tag: 0 0 0 1px rgb(19 26 48 / 0.07), 0 12px 24px -16px rgb(19 26 48 / 0.3);
 }
 
 @layer base {
@@ -82,12 +83,12 @@
   }
 
   :focus-visible {
-    outline: 3px solid var(--color-cobalt);
+    outline: 3px solid var(--color-navy);
     outline-offset: 3px;
     border-radius: 4px;
   }
 
-  .on-cobalt :focus-visible,
+  .on-dark :focus-visible,
   .bg-slate-950 :focus-visible {
     outline-color: var(--color-signal);
   }
@@ -95,8 +96,8 @@
   input,
   select,
   textarea {
-    accent-color: var(--color-cobalt);
-    caret-color: var(--color-cobalt);
+    accent-color: var(--color-navy);
+    caret-color: var(--color-navy);
   }
 
   a {

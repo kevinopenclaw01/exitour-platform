@@ -15,7 +15,7 @@ const travelTypes = ["단독 맞춤 일정", "공항 이동 · 전용차량", "�
 // JS 없이도 동작하는 GET 폼: 고른 값이 /quote?destination=…&service=… 로 넘어가 견적 요청서에 미리 채워진다.
 export default function TripStarter() {
   return (
-    <form action="/quote" method="get" className="tag tag-hole w-full px-5 pb-5 pt-12 text-ink [--hole-bg:var(--color-cobalt)] sm:px-7 sm:pb-7">
+    <form action="/quote" method="get" className="tag tag-hole w-full px-5 pb-5 pt-12 text-ink [--hole-bg:#fff] sm:px-7 sm:pb-7">
       <input type="hidden" name="sourcePath" value="/" />
       <fieldset>
         <legend className="text-base font-bold">어디로 가세요?</legend>
@@ -23,7 +23,7 @@ export default function TripStarter() {
           {starterDestinations.map((destination, index) => (
             <label
               key={destination.id}
-              className="group relative flex min-h-16 cursor-pointer flex-col items-center justify-center rounded-md border-2 border-line px-1 py-2 text-center transition-colors hover:border-slate-400 has-[:checked]:border-cobalt has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-cobalt"
+              className="group relative flex min-h-16 cursor-pointer flex-col items-center justify-center rounded-md border-2 border-line px-1 py-2 text-center transition-colors hover:border-slate-400 has-[:checked]:border-navy has-[:checked]:bg-navy has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-navy"
             >
               <input type="radio" name="destination" value={destination.name} defaultChecked={index === 0} className="sr-only" />
               <span className="code text-[1.6rem]">{airportCodes[destination.id].code}</span>
@@ -39,7 +39,7 @@ export default function TripStarter() {
           {travelTypes.map((type, index) => (
             <label
               key={type}
-              className="cursor-pointer rounded-full border-2 border-line px-4 py-2 text-sm font-medium transition-colors hover:border-slate-400 has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-cobalt"
+              className="cursor-pointer rounded-full border-2 border-line px-4 py-2 text-sm font-medium transition-colors hover:border-slate-400 has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-navy"
             >
               <input type="radio" name="service" value={type} defaultChecked={index === 0} className="sr-only" />
               {type}
