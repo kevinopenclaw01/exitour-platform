@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:pricing": "node scripts/test-pricing.mjs",
+    "test:quote-notifications": "node --test scripts/quote-notifications/core.test.mjs",
     "pricing:preview": "node scripts/preview-pricing.mjs"
   },
   "dependencies": {
