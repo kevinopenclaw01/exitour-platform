@@ -1,11 +1,8 @@
 import Link from "next/link";
 
 const footerLinks = [
-  { href: "/destinations", label: "목적지" },
-  { href: "/products", label: "상품" },
-  { href: "/premium-packages", label: "단독 패키지" },
-  { href: "/hotels", label: "호텔 · 리조트" },
-  { href: "/custom-package", label: "맞춤 일정" },
+  { href: "/packages", label: "우리끼리 맞춤 패키지" },
+  { href: "/activities", label: "내맘대로 단품 투어" },
   { href: "/quote", label: "견적 요청" },
 ];
 
@@ -16,7 +13,7 @@ export default function Footer() {
         <div>
           <p className="code text-5xl text-white">EXITour</p>
           <p className="mt-4 max-w-sm text-sm leading-7 text-slate-300">
-            항공권은 이미 있어도 괜찮습니다. 호텔, 차량, 현지 투어를 우리 일행의 속도에 맞춰 묶어 드립니다.
+            우리 일행만을 위한 맞춤 패키지, 필요한 서비스만 고르는 단품 투어. 여행의 방식을 EXITour와 함께 선택하세요.
           </p>
         </div>
         <div>

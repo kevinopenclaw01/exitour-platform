@@ -25,8 +25,8 @@ const archivo = Archivo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://exitour.co.kr"),
-  title: "EXITour | 프리미엄 맞춤 여행 상담",
-  description: "휴양, 가족여행, 프리미엄 단독 자연여행을 위한 EXITour. 호텔, 차량, 현지 투어를 연결해 여행 조건에 맞는 일정을 상담합니다.",
+  title: "EXITour | 우리끼리 맞춤 패키지 · 내맘대로 단품 투어",
+  description: "우리 그룹 전담 가이드와 만드는 맞춤 패키지, 필요한 서비스만 고르는 단품 투어. EXITour와 우리에게 맞는 여행을 준비하세요.",
 };
 
 export default function RootLayout({

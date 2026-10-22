@@ -6,11 +6,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
-  { href: "/destinations", label: "목적지" },
-  { href: "/products", label: "상품" },
-  { href: "/premium-packages", label: "단독 패키지" },
-  { href: "/hotels", label: "호텔" },
-  { href: "/custom-package", label: "맞춤 일정" },
+  { href: "/packages", label: "우리끼리 맞춤 패키지" },
+  { href: "/activities", label: "내맘대로 단품 투어" },
 ];
 
 export default function Header() {
@@ -28,7 +25,7 @@ export default function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
         <Link href="/" onClick={() => setOpen(false)} className="flex shrink-0 items-baseline gap-2.5" aria-label="EXITour 홈">
           <span className="code text-[2rem] text-navy">EXITour</span>
-          <span className="hidden text-xs font-medium text-muted sm:inline">여행의 시작, 엑시투어</span>
+          <span className="hidden text-xs font-medium text-muted xl:inline">여행의 시작, 엑시투어</span>
         </Link>
 
         <nav aria-label="주요 메뉴" className="hidden items-center gap-1 lg:flex">

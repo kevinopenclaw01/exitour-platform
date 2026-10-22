@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
+import { legacyCatalogRedirects } from "./lib/travel/legacyRoutes";
 
 const nextConfig: NextConfig = {
+  redirects: () => legacyCatalogRedirects,
   images: {
     remotePatterns: [
       {
