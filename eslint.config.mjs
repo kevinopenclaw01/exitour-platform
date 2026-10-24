@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Remotion 쇼츠 프로젝트는 별도 의존성과 린트 설정을 사용
+    "shorts/**",
   ]),
 ]);
 
